@@ -1,26 +1,22 @@
 # Maintainer: Ivan Semkin (ivan at semkin dot ru)
 
-pkgname=cmake-extras-git
+pkgname=cmake-extras-lomiri
 _pkgname=cmake-extras
-pkgver=r251.4db1e08
+pkgver=r290.99aab45
 pkgrel=1
 pkgdesc='A collection of add-ons for the CMake build tool'
-url='https://github.com/ubports/cmake-extras'
+url='https://gitlab.com/ubports/development/core/cmake-extras'
 arch=(any)
 license=(GPL3)
 conflicts=(cmake-extras)
 provides=(cmake-extras)
 depends=(python)
 makedepends=(git cmake)
-source=('git+https://github.com/ubports/cmake-extras.git'
-        'Gtest.patch')
-sha256sums=('SKIP'
-            '84880029cf774b41e6f61f4977bdc3a36621a571087d272a44aa3776a4f883e0')
+source=('git+https://gitlab.com/ubports/development/core/cmake-extras.git')
+sha256sums=('SKIP')
 
 prepare() {
   cd ${_pkgname}
-  git checkout master
-  patch -Np1 -i "${srcdir}/Gtest.patch"
 }
             
 pkgver() {

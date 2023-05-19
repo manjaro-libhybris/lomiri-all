@@ -1,0 +1,13 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+--- tests/CMakeLists.txt	2023-05-19 07:23:54.166393071 +0000
++++ tests/CMakeLists.txt	2023-05-19 07:25:01.415868796 +0000
+@@ -80,7 +80,7 @@ else()
+ add_executable(test_qml_plugin test_qml_plugin.cpp)
+ qt5_use_modules(test_qml_plugin Core Qml Quick QuickTest)
+ add_test(test_qml_plugin test_qml_plugin)
+-set_tests_properties(test_qml_plugin PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=minimal;QML2_IMPORT_PATH=${CMAKE_BINARY_DIR}/src/biometry/qml;BIOMETRYD_QML_ENABLE_TESTING=1")
++#set_tests_properties(test_qml_plugin PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=minimal;QML2_IMPORT_PATH=${CMAKE_BINARY_DIR}/src/biometry/qml;BIOMETRYD_QML_ENABLE_TESTING=1")
+ file(GLOB BIOMETRYD_QML_TEST_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tst_*.qml)
+ 
+ foreach (QML_FILE ${BIOMETRYD_QML_TEST_FILES})

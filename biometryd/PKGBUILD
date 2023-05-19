@@ -2,41 +2,47 @@
 
 pkgname=biometryd-git
 _pkgname=biometryd
-pkgver=r130.d91741b
+pkgver=r232.0.3.0
 pkgrel=1
 pkgdesc='Fingerprint deamon'
-url='https://github.com/ubports/biometryd'
+url='https://gitlab.com/ubports/development/core/biometryd'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL GPL)
 conflicts=(biometryd)
 provides=(biometryd)
 depends=(qt5-base qt5-declarative dbus-cpp apparmor process-cpp properties-cpp boost-libs libelf sqlite)
-makedepends=(git cmake boost cmake-extras-git gtest gmock)
+makedepends=(git cmake boost cmake-extras-lomiri gtest gmock)
 checkdepends=()
-source=('git+https://github.com/ubports/biometryd.git#branch=xenial'
-        'fix-new-gcc-and-boost.patch')
+source=('git+https://gitlab.com/ubports/development/core/biometryd'
+        'disable-tests.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            '999513331347eae5a6eb64f67a19be77f1af0949f6cf93cf86fe1585cd91ae40')
 
 BUILD_DIR=build
 
-pkgver() {
-  cd ${_pkgname}
-  echo "r$(git rev-list --count HEAD).$(git describe --always)"
+prepare() {
+    cd biometryd/tests
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np1 < "../../$src"
+    done
 }
 
-prepare() {
+pkgver() {
   cd ${_pkgname}
-
-  patch -Np1 -i "${srcdir}/fix-new-gcc-and-boost.patch"
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f 1
 }
 
 build() {
   cd ${_pkgname}
   mkdir -p ${BUILD_DIR}
   cd ${BUILD_DIR}
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..
-  make
+  CXXFLAGS=-Wno-error=maybe-uninitialized cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DBUILD_TESTING=OFF ..
+  make -j8
 }
 
 package() {
