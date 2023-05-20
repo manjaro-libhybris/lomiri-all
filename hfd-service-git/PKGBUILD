@@ -8,7 +8,7 @@ pkgdesc="Human Feedback Service for Lomiri UI"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/ubports/hfd-service"
 license=("GPL3")
-depends=(qt5-base qt5-declarative qt5-feedback)
+depends=(qt5-es2-base qt5-es2-declarative qt5-feedback)
 makedepends=("cmake" "cmake-extras" "git")
 source=("git+https://github.com/ubports/${_pkgname}.git#branch=xenial")
 md5sums=("SKIP")

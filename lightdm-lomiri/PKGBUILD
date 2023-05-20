@@ -29,7 +29,7 @@ makedepends=(
   libxklavier
   pam
   polkit
-  qt5-base
+  qt5-es2-base
   vala
   yelp-tools
 )
@@ -148,7 +148,7 @@ package_liblightdm-qt5-lomiri() {
   pkgdesc='LightDM Qt client library'
   depends=(
     lightdm-lomiri
-    qt5-base
+    qt5-es2-base
   )
   options=(!emptydirs)
 provides=(liblightdm-qt5)

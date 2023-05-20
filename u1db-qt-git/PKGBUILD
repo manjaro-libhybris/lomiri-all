@@ -9,7 +9,7 @@ pkgdesc="U1 database for qt"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://github.com/ubports/u1db-qt"
 license=('GPL3')
-depends=(qt5-base qt5-declarative)
+depends=(qt5-es2-base qt5-es2-declarative)
 makedepends=('git' 'cmake' 'intltool')
 source=('git+https://github.com/ubports/u1db-qt.git'
         'https://github.com/ubports/u1db-qt/pull/1.patch')

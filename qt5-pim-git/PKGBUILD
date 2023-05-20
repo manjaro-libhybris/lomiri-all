@@ -10,7 +10,7 @@ arch=(x86_64 i686 armv7h aarch64)
 license=()
 conflicts=(qt5-pim)
 provides=(qt5-pim)
-depends=(qt5-declarative)
+depends=(qt5-es2-declarative)
 makedepends=(git)
 source=('git+git://code.qt.io/qt/qtpim.git#commit=c2026b9fb47d914a68fcfc0ed4d80a24da705a7f'
 	0002-Set-PLUGIN_CLASS_NAME-in-.pro-files.patch
