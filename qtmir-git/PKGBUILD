@@ -5,14 +5,14 @@ pkgname=(qtmir-git)
 _pkgname=qtmir
 pkgver=r2708.0.7.0
 pkgrel=1
-url='https://github.com/ubports/qtmir'
+url='https://gitlab.com/ubports/development/core/qtmir'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
 conflicts=(qtmir)
 provides=(qtmir)
 depends=(qt5-es2-base qt5-quickcontrols qt5-sensors mir process-cpp lomiri-app-launch-git gsettings-qt-git libqtdbustest-git libqtdbusmock-git url-dispatcher-git glm valgrind)
 makedepends=(git cmake cmake-extras-lomiri gtest)
-source=('git+https://gitlab.com/ubports/development/core/qtmir.git')
+source=('git+https://gitlab.com/ubports/development/core/qtmir')
 sha256sums=('SKIP')
 
 BUILDENV+=('!check')

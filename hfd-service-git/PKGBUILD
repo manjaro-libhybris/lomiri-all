@@ -6,11 +6,11 @@ pkgver=r35.8d6e2e1
 pkgrel=1
 pkgdesc="Human Feedback Service for Lomiri UI"
 arch=("i686" "x86_64" "aarch64")
-url="https://github.com/ubports/hfd-service"
+url="https://gitlab.com/ubports/development/core/hfd-service"
 license=("GPL3")
 depends=(qt5-es2-base qt5-es2-declarative qt5-feedback)
 makedepends=("cmake" "cmake-extras" "git")
-source=("git+https://github.com/ubports/${_pkgname}.git#branch=xenial")
+source=("git+https://gitlab.com/ubports/development/core/hfd-service")
 md5sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
@@ -20,13 +20,8 @@ pkgver() {
   cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-prepare() 
-{
-  cd ${_pkgname}
-}
 
-build()
-{
+build() {
    cd ${_pkgname}
    mkdir -p build
    cd build
@@ -34,8 +29,7 @@ build()
    make
 }
 
-package()
-{
+package() {
     cd ${_pkgname}/build
     make DESTDIR="${pkgdir}" install
 	mv ${pkgdir}/usr/lib/qt5 ${pkgdir}/usr/lib/qt/

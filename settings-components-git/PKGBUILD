@@ -15,7 +15,7 @@ makedepends=(git cmake cmake-extras-lomiri)
 source=('git+https://gitlab.com/ubports/development/core/lomiri-settings-components.git')
 sha256sums=('SKIP')
 
-BUILDENV+=('!check') # https://paste.ubuntu.com/p/gsfv2YX6Z5/
+BUILDENV+=('!check')
 BUILD_DIR=build
 
 pkgver() {

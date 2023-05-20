@@ -5,14 +5,14 @@ _pkgname=mediascanner2
 pkgver=2.0
 pkgrel=4
 pkgdesc='MediaScanner2 from UBPorts'
-url='https://github.com/ubports/mediascanner2'
+url='https://gitlab.com/ubports/development/core/mediascanner2'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
 conflicts=(mediascanner2)
 provides=(mediascanner2)
 depends=(libexif dbus-cpp dbus apparmor glib2 gstreamer gst-plugins-base gdk-pixbuf2 properties-cpp sqlite taglib udisks2 qt5-es2-declarative gst-plugins-good)
 makedepends=(cmake cmake-extras-lomiri gtest shared-mime-info)
-source=("git+https://github.com/ubports/mediascanner2#branch=xenial"
+source=("git+https://gitlab.com/ubports/development/core/mediascanner2"
         "fix-cmake-hh-moc-policy.patch")
 md5sums=('SKIP'
          'SKIP')

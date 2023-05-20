@@ -5,14 +5,14 @@ _pkgname=location-service
 pkgver=r963.7dc0ae2
 pkgrel=2
 pkgdesc='Location service aggregating position/velocity/heading updates and exporting them over dbus'
-url='https://github.com/ubports/location-service'
+url='https://gitlab.com/ubports/development/core/location-service'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL GPL)
 conflicts=(location-service)
 provides=(location-service)
 depends=(boost net-cpp-git trust-store-git gtest gmock clang)
 makedepends=(git cmake cmake-extras-lomiri doxygen)
-source=('git+https://github.com/ubports/location-service.git#branch=xenial_-_edge_-_wayland')
+source=('git+https://gitlab.com/ubports/development/core/location-service')
 sha256sums=('SKIP')
 
 #--   Package 'wpsapi', required by 'virtual:world', not found

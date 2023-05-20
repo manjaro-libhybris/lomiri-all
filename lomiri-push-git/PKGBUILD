@@ -1,16 +1,16 @@
-pkgname=ubuntu-push-git
-_pkgname=ubuntu-push
+pkgname=lomiri-push-git
+_pkgname=lomiri-push
 pkgver=r2436.da470db
 pkgrel=1
 pkgdesc="Protocol, client, and development code for Ubuntu Touch push notifications"
 arch=('x86_64' 'aarch64')
-url="https://github.com/ubports/ubuntu-push"
+url="https://gitlab.com/ubports/development/core/lomiri-push-service"
 license=('GPL')
 depends=()
-makedepends=('git' 'go' 'click' 'url-dispatcher' 'ubuntu-app-launch' 'indicator-messages')
-provides=('ubuntu-push')
-conflicts=('ubuntu-push')
-source=("git+https://github.com/ubports/ubuntu-push"
+makedepends=('git' 'go' 'click' 'url-dispatcher' 'lomiri-app-launch-git' 'indicator-messages')
+provides=('lomiri-push')
+conflicts=('lomiri-push')
+source=("git+https://gitlab.com/ubports/development/core/lomiri-push-service"
         0001-Remove-v0-suffix-from-go-xdg-imports.patch
         0002-Remove-v1-suffix-from-go-dbus-imports.patch
         0003-Initial-conversion-to-Go-modules.patch
@@ -36,7 +36,7 @@ prepare(){
 
 build(){
   cd "$_pkgname"
-  go build -o ubuntu-push-client ubuntu-push-client.go
+  go build -o lomiri-push-client lomiri-push-client.go
   go build -o push-server-dev server/dev/server.go
 }
 

@@ -1,16 +1,16 @@
 # Maintainer: Marius Gripsgard <marius@ubports.com>
 
-pkgname=ubuntu-ui-extras-git
-_pkgname=ubuntu-ui-extras
+pkgname=lomiri-ui-extras-git
+_pkgname=lomiri-ui-extras
 pkgver=r602.8fecad1
 pkgrel=1
 pkgdesc="Lomiri UI toolkit extras for Mobile Devices"
 arch=('x86_64' 'armv7' 'aarch64')
-url="https://github.com/ubports/ubuntu-ui-extras.git"
+url="https://gitlab.com/ubports/development/core/lomiri-ui-extras"
 license=('GPL3')
 depends=(qt5-es2-base qt5-es2-declarative libcups exiv2)
 makedepends=('git' 'cmake' 'cmake-extras')
-source=('git+https://github.com/ubports/ubuntu-ui-extras.git')
+source=('git+https://gitlab.com/ubports/development/core/lomiri-ui-extras')
 md5sums=('SKIP')
 
 pkgver() {

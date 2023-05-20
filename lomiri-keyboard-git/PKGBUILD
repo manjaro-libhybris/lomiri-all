@@ -1,21 +1,19 @@
 # Maintainer: Philip Müller <philm@manjaro.org>
 # Contributor: Bhushan Shah <bshah@kde.org>
+
 pkgname=lomiri-keyboard-git
-_pkgname=keyboard-component
+_pkgname=lomiri-keyboard
 pkgver=r2086.geaa3d713
 pkgrel=6
 pkgdesc="Lomiri Maliit Keyboard"
 arch=('aarch64')
-url="https://github.com/ubports/keyboard-component"
+url="https://gitlab.com/ubports/development/core/lomiri-keyboard"
 license=('GPL')
 groups=()
-depends=('maliit-framework-git' 'qt5-feedback' 'qt5-es2-multimedia' 'gsettings-qt-git'
+depends=('maliit-framework' 'qt5-feedback' 'qt5-es2-multimedia' 'gsettings-qt-git'
          'hunspell' 'libchewing' 'presage-git' 'libpinyin' 'sqlite' 'anthy')
 makedepends=('git' 'cmake')
-#provides=(maliit-keyboard)
-#conflicts=(maliit-keyboard maliit-keyboard-git)
-install=
-source=("git+$url.git"
+source=("git+https://gitlab.com/ubports/development/core/lomiri-keyboard"
         "fix-for-newer-cpp.patch"
         "hack-maliit-dirs.patch"
         "https://github.com/maliit/keyboard/commit/269646fd87ef79118493011fae3a3c30ac395586.patch"

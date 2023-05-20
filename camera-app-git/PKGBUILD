@@ -8,7 +8,7 @@ pkgdesc="Camera application"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://gitlab.com/ubports/apps/camera-app"
 license=('GPL3')
-depends=(qt5-es2-base qt5-es2-multimedia qt5-quickcontrols2 exiv2 ubuntu-ui-toolkit-git
+depends=(qt5-es2-base qt5-es2-multimedia qt5-quickcontrols2 exiv2 lomiri-ui-toolkit-git
          libusermetrics-git lomiri-action-api-git gst-plugins-bad-hybris gst-plugins-bad-libs-hybris) 
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'intltool')
 source=("git+$url.git"

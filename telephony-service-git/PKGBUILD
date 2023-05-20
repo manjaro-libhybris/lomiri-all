@@ -5,7 +5,7 @@ _pkgname=telephony-service
 pkgver=r4679.37272505
 pkgrel=1
 pkgdesc='This project provides an implementation of the Free Desktop Notification server for Unity'
-url='https://github.com/ubports/telephony-service'
+url='https://gitlab.com/ubports/development/core/telephony-service'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL GPL)
 conflicts=(telephony-service)
@@ -15,7 +15,7 @@ depends=(qt5-es2-base qt5-es2-multimedia qt5-pim-git dbus-test-runner libusermet
          qt5-feedback lomiri-notifications)
 makedepends=(git cmake libpulse)
 checkdepends=()
-source=('git+https://gitlab.com/ubports/development/core/telephony-service.git#branch=main')
+source=('git+https://gitlab.com/ubports/development/core/telephony-service')
 sha256sums=('SKIP')
 
 BUILD_DIR=build

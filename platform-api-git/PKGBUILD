@@ -5,14 +5,14 @@ _pkgname=platform-api
 pkgver=r1263.464a38b
 pkgrel=2
 pkgdesc='Platform API for system level capabilities'
-url='https://github.com/ubports/platform-api'
+url='https://gitlab.com/ubports/development/core/platform-api'
 arch=(x86_64 i686 armv7h aarch64)
 license=(GPL3)
 conflicts=(platform-api)
 provides=(platform-api)
 depends=(location-service-git url-dispatcher-git process-cpp)
 makedepends=(git cmake cmake-extras-lomiri doxygen)
-source=('git+https://github.com/ubports/platform-api.git'
+source=('git+https://gitlab.com/ubports/development/core/platform-api'
         'hybris.patch')
 sha256sums=('SKIP'
             '4ad5879d7e6ba5d9c269dc59b30e6069d9846d40fbb66773170357375fdc0fbe')

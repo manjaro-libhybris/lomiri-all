@@ -6,18 +6,18 @@ pkgver=r1183.9a56dc8
 pkgrel=1
 epoch=1
 pkgdesc='Content sharing/picking infrastructure and service'
-url='https://github.com/ubports/content-hub'
+url='https://gitlab.com/ubports/development/core/content-hub'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL3)
 conflicts=(content-hub)
 provides=(content-hub)
-depends=(lcov gcovr gmock ubuntu-app-launch-git ubuntu-download-manager-git gsettings-qt apparmor libnotify ubuntu-ui-toolkit-git)
+depends=(lcov gcovr gmock lomiri-app-launch-git lomiri-download-manager-git gsettings-qt apparmor libnotify lomiri-ui-toolkit-git)
 makedepends=(git cmake cmake-extras-lomiri doxygen graphviz) 
 checkdepends=(xorg-server-xvfb)
-source=('git+https://github.com/ubports/content-hub.git#branch=xenial')
+source=('git+https://gitlab.com/ubports/development/core/content-hub')
 sha256sums=('SKIP')
 
-BUILDENV+=('!check') # https://paste.ubuntu.com/p/XXm29c8rv8/
+BUILDENV+=('!check')
 
 pkgver() {
   cd ${_pkgname}

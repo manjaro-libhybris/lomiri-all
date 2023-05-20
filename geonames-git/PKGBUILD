@@ -5,13 +5,13 @@ _pkgname=geonames
 pkgver=r5.ce158ce
 pkgrel=1
 pkgdesc='Parse and query the geonames database dump'
-url='https://github.com/ubports/geonames'
+url='https://gitlab.com/ubports/development/core/geonames'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL3)
 conflicts=(geonames)
 provides=(geonames)
 makedepends=(git gtk-doc)
-source=('git+https://bitbucket.org/vanyasem/geonames')
+source=('git+https://gitlab.com/ubports/development/core/geonames')
 sha256sums=('SKIP')
 
 BUILDENV+=('!check') # Weird locale issues

@@ -4,16 +4,16 @@ pkgname=system-settings-git
 _pkgname=system-settings
 pkgver=r7783.bf1c2d30
 pkgrel=1
-pkgdesc='System Settings application for Unity8'
-url='https://github.com/ubports/system-settings'
+pkgdesc='System Settings application for Lomiri'
+url='https://gitlab.com/ubports/development/core/lomiri-system-settings'
 arch=(x86_64 i686 armv7h aarch64)
 license=(GPL3)
 conflicts=(system-settings)
 provides=(system-settings)
-depends=(trust-store-git click-git gnome-desktop ubuntu-app-launch-git geonames-git libqtdbusmock-git ubuntu-ui-toolkit-git gsettings-qt-git accountsservice-ubuntu upower lomiri-themes-git qmenumodel-git libqofono-qt5 content-hub-git)
+depends=(trust-store-git click-git gnome-desktop lomiri-app-launch-git geonames-git libqtdbusmock-git lomiri-ui-toolkit-git gsettings-qt-git accountsservice-ubuntu upower lomiri-themes-git qmenumodel-git libqofono-qt5 content-hub-git)
 makedepends=(git cmake intltool)
 checkdepends=(xorg-server-xvfb)
-source=('git+https://github.com/ubports/system-settings.git#branch=xenial'
+source=('git+https://gitlab.com/ubports/development/core/lomiri-system-settings'
         '0001-Use-ayatana-for-power-sound-and-datetime.patch'
         'no-deb-system-updates.patch')
 sha256sums=('SKIP'

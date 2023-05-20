@@ -6,11 +6,11 @@ pkgver=r322.4fa3396
 pkgrel=1
 pkgdesc="Repowerd, power daemon for Lomiri UI"
 arch=("i686" "x86_64" "aarch64")
-url="https://github.com/ubports/repowerd"
+url="https://gitlab.com/ubports/development/core/repowerd"
 license=("GPL3")
 depends=("glib2" "systemd" "qt5-es2-base" "deviceinfo" "dbus")
 makedepends=("cmake" "cmake-extras" "gmock")
-source=("git+https://github.com/ubports/${_pkgname}.git#branch=xenial_-_edge_-_wayland"
+source=("git+https://gitlab.com/ubports/development/core/repowerd"
         "0001-Allow-to-be-built-without-hybris-android-papi-suppor.patch"
         "0002-Fix-warning-on-newer-gcc.patch"
         "0001-Install-systemd-unit-with-cmake-not-just-debian-pkg.patch"

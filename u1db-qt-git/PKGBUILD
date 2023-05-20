@@ -7,25 +7,16 @@ pkgver=r414.8dd87b9
 pkgrel=3
 pkgdesc="U1 database for qt"
 arch=('x86_64' 'armv7' 'aarch64')
-url="https://github.com/ubports/u1db-qt"
+url="https://gitlab.com/ubports/development/core/u1db-qt"
 license=('GPL3')
 depends=(qt5-es2-base qt5-es2-declarative)
 makedepends=('git' 'cmake' 'intltool')
-source=('git+https://github.com/ubports/u1db-qt.git'
-        'https://github.com/ubports/u1db-qt/pull/1.patch')
-md5sums=('SKIP'
-         'SKIP')
+source=('git+https://gitlab.com/ubports/development/core/u1db-qt')
+md5sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
-  cd ${_pkgname}
-
-  patch -Np1 -i "${srcdir}/1.patch"
 }
 
 build() {
