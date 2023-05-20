@@ -27,27 +27,7 @@ index 57edd0da5e..a007be45bf 100644
      DisplayClient{wl_display, gl_config},
      report{report},
      shutdown_signal{::eventfd(0, EFD_CLOEXEC)},
-@@ -96,6 +97,20 @@ mgw::Display::Display(
- 
-     std::lock_guard<decltype(the_display_mtx)> lock{the_display_mtx};
-     the_display = this;
-+
-+    auto conf = configuration();
-+    initial_conf_policy->apply_to(*conf.get());
-+
-+    DisplayClient::for_each_output(
-+        [&](DisplayConfigurationOutput &output) {
-+            conf->for_each_output(
-+                [&](UserDisplayConfigurationOutput &newconf) {
-+                    if (output.id == newconf.id) {
-+                        output.scale = newconf.scale;
-+                        output.form_factor = newconf.form_factor;
-+                    }
-+                });
-+        });
- }
- 
- auto mgw::Display::configuration() const -> std::unique_ptr<DisplayConfiguration>
+
 diff --git a/src/platforms/wayland/display.h b/src/platforms/wayland/display.h
 index 0fd9f08c53..23e3c2f006 100644
 --- a/src/platforms/wayland/display.h

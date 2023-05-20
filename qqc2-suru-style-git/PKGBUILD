@@ -2,15 +2,15 @@
 
 pkgname=qqc2-suru-style-git
 _pkgname=qqc2-suru-style
-pkgver=r81.4bd56af
+pkgver=r104.6b84620
 pkgrel=1
 pkgdesc="Suru style for QtQuick Controls 2"
 arch=('x86_64' 'armv7' 'aarch64')
-url="https://github.com/ubports/qqc2-suru-style.git"
+url="https://gitlab.com/ubports/development/core/qqc2-suru-style"
 license=('GPL3')
-depends=(qt5-base qt5-declarative qt5-quickcontrols2)
+depends=(qt5-es2-base qt5-es2-declarative qt5-quickcontrols2)
 makedepends=('git')
-source=('git+https://github.com/ubports/qqc2-suru-style.git')
+source=('git+https://gitlab.com/ubports/development/core/qqc2-suru-style')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,6 @@ pkgver() {
 prepare() {
   mkdir -p build
   cd ${_pkgname}
-#  patch -Np1 -i "${srcdir}/0001-dont-replace-upstream-qmltermwidget.patch"
 }
 
 build() {

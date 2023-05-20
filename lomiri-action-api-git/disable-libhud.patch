@@ -1,0 +1,13 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/CMakeLists.txt b/CMakeLists.txt
+--- CMakeLists.txt	2023-05-19 15:11:18.340739360 +0000
++++ CMakeLists.txt	2023-05-19 15:13:26.475145800 +0000
+@@ -14,7 +14,7 @@ endif()
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+ 
+ option(basic_warnings "Basic compiler warnings." ON)
+-option(use_libhud2 "Use external libhud2 lib" ON)
++option(use_libhud2 "Use external libhud2 lib" OFF)
+ include(FindPkgConfig)
+ 
+ if (use_libhud2)

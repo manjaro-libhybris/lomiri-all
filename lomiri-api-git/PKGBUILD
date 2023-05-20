@@ -2,7 +2,7 @@
 
 pkgname=lomiri-api-git
 _pkgname=lomiri-api
-pkgver=r1136.0.1.1.r9.g105f7ec
+pkgver=r1145.0.1.1.r18.gfb09560
 pkgrel=1
 pkgdesc='API for Lomiri shell integration'
 url='https://gitlab.com/ubports/development/core/lomiri-api'
@@ -11,7 +11,7 @@ license=(LGPL3)
 conflicts=(lomiri-api)
 provides=(lomiri-api)
 depends=(qt5-quickcontrols)
-makedepends=(git cmake cppcheck graphviz libqtdbustest-git cmake-extras-git)
+makedepends=(git cmake cppcheck graphviz libqtdbustest-git cmake-extras-lomiri)
 source=('git+https://gitlab.com/ubports/development/core/lomiri-api.git#branch=main')
 sha256sums=('SKIP')
 

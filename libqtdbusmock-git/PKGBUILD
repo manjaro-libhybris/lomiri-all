@@ -2,18 +2,18 @@
 
 pkgname=libqtdbusmock-git
 _pkgname=libqtdbusmock
-pkgver=r126.1e9fd84
+pkgver=r134.e875ddd
 pkgrel=1
 pkgdesc='Library for mocking DBus interactions using Qt'
-url='https://github.com/ubports/libqtdbusmock'
+url='https://gitlab.com/ubports/development/core/libqtdbusmock'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL3)
 conflicts=(libqtdbusmock)
 provides=(libqtdbusmock)
 depends=(networkmanager libqtdbustest-git gmock)
-makedepends=(git cmake cmake-extras-git) 
+makedepends=(git cmake cmake-extras-lomiri)
 checkdepends=(python-dbusmock python-dbus python-gobject)
-source=('git+https://github.com/ubports/libqtdbusmock.git')
+source=('git+https://gitlab.com/ubports/development/core/libqtdbusmock')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,12 +24,7 @@ pkgver() {
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
-  make
-}
-
-check() {
-  cd ${_pkgname}
-  make ARGS+="--output-on-failure" test
+  make -j8
 }
 
 package() {

@@ -10,7 +10,7 @@ arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL3)
 conflicts=(qmenumodel)
 provides=(qmenumodel)
-depends=(qt5-base qt5-quickcontrols)
+depends=(qt5-es2-base qt5-quickcontrols)
 makedepends=(git cmake)
 source=('git+https://github.com/AyatanaIndicators/qmenumodel.git')
 sha256sums=('SKIP')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
-  make
+  make -j8
 }
 
 package() {
