@@ -1,0 +1,13 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/CMakeLists.txt b/CMakeLists.txt
+--- CMakeLists.txt	2023-05-21 02:27:12.985344860 +0000
++++ CMakeLists.txt	2023-05-21 02:38:29.786975851 +0000
+@@ -53,7 +53,7 @@ set(CMAKE_INSTALL_FULL_PKGLIBEXECDIR "${
+ set(CMAKE_INSTALL_FULL_PKGDATADIR "${CMAKE_INSTALL_FULL_DATADIR}/${CMAKE_PROJECT_NAME}")
+ 
+ if(NOT LOMIRI_APP_LAUNCH_ARCH)
+-	execute_process(COMMAND dpkg-architecture -qDEB_BUILD_MULTIARCH
++	execute_process(COMMAND ./triplet
+ 		OUTPUT_VARIABLE LOMIRI_APP_LAUNCH_ARCH
+ 		OUTPUT_STRIP_TRAILING_WHITESPACE
+ 	)

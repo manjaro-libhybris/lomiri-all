@@ -3,7 +3,7 @@
 pkgbase=lomiri-app-launch
 pkgname=(lomiri-app-launch-git)
 _pkgname=lomiri-app-launch
-pkgver=r3086.0.0.90.r40.ga2c78e6
+pkgver=r3158.0.1.6.r5.g01675ca
 pkgrel=1
 pkgdesc='Session init system job for Launching Applications'
 url='https://gitlab.com/ubports/development/core/lomiri-app-launch'
@@ -12,16 +12,23 @@ license=(GPL)
 depends=(zeitgeist gobject-introspection lttng-ust lomiri-api-git properties-cpp curl click-git)
 makedepends=(git cmake  cmake-extras-lomiri dbus-test-runner gmock lcov gcovr)
 source=('git+https://gitlab.com/ubports/development/core/lomiri-app-launch'
-        '0001-Add-missing-array-includes.patch')
+        'get-arch.patch'
+        'triplet')
 sha256sums=('SKIP'
-            '5ed730f06c89df07da34ba66c3570b7a0fae70d8a24015d13849a0d00b070f0f')
+            '3c79b3a98160f85ee672901ef4abab2657c9ec6a606b7af45ecb007c53a7dd21'
+            'ffd586b2213a62a2bbe91e0fb540749cee379cedf6fc58a405c26982db4731fc')
 
 BUILDENV+=('!check') # Some tests are broken
 
 prepare() {
     cd ${_pkgname}
-    for i in "${srcdir}/"*.patch; do
-        patch -Np1 -i "$i"
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -N < "../$src"
     done
 }
 
@@ -32,6 +39,7 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
+  cp ../../triplet triplet
   sed -i 's/-std=gnu99/-std=gnu99 -Wno-deprecated-declarations/g' CMakeLists.txt
   sed -i 's/-std=c++11/-std=c++11 -Wno-deprecated-declarations/g' CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_LIBEXECDIR="lib/" .
