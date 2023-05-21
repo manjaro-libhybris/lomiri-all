@@ -2,7 +2,7 @@
 
 pkgname=libusermetrics-git
 _pkgname=libusermetrics
-pkgver=r479.ed7dd5d
+pkgver=r598.1.3.0
 pkgrel=1
 pkgdesc='Library for exporting anonymous metrics about users'
 url='https://gitlab.com/ubports/development/core/libusermetrics'
@@ -19,12 +19,7 @@ BUILDENV+=('!check') # Some tests are broken
 
 pkgver() {
   cd ${_pkgname}
-  echo "r$(git rev-list --count HEAD).$(git describe --always)"
-}
-
-prepare() {
-  cd ${_pkgname}
-  git checkout bionic
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f 1
 }
 
 build() {

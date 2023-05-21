@@ -3,8 +3,8 @@
 pkgbase=u1db-qt-git
 pkgname=(u1db-qt-git u1db-qt-demos-git)
 _pkgname=u1db-qt
-pkgver=r414.8dd87b9
-pkgrel=3
+pkgver=r433.5584f7f
+pkgrel=1
 pkgdesc="U1 database for qt"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://gitlab.com/ubports/development/core/u1db-qt"
@@ -20,6 +20,7 @@ pkgver() {
 }
 
 build() {
+  mkdir build
   cd build
   cmake ../${_pkgname} . -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var
   make

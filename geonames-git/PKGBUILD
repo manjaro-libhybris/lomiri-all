@@ -2,7 +2,7 @@
 
 pkgname=geonames-git
 _pkgname=geonames
-pkgver=r5.ce158ce
+pkgver=r111.0.3.0
 pkgrel=1
 pkgdesc='Parse and query the geonames database dump'
 url='https://gitlab.com/ubports/development/core/geonames'
@@ -23,17 +23,13 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  ./autogen.sh --prefix=/usr
-  make
-}
-
-check() {
-  cd ${_pkgname}
-  make check
+  mkdir -p build
+  cd build
+  cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var
+  make -j8
 }
 
 package() {
-  cd ${_pkgname}
+  cd ${_pkgname}/build
   make DESTDIR="${pkgdir}/" install
 }
-# vim:set ts=2 sw=2 et:
