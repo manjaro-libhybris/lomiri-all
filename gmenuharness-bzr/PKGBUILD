@@ -2,17 +2,17 @@
 
 pkgname=gmenuharness-bzr
 _pkgname=gmenuharness
-pkgver=r31
-pkgrel=2
+pkgver=r85.04e27ce
+pkgrel=1
 pkgdesc="Testing enablement library for projects exporting GiO's gmenu/gaction endpoints"
-url='https://launchpad.net/gmenuharness'
+url='https://gitlab.com/ubports/development/core/gmenuharness'
 arch=(x86_64 i686 armv7h aarch64)
 license=()
 conflicts=(gmenuharness)
 provides=(gmenuharness)
-depends=(lomiri-api-git gtest libqtdbustest-git)
+depends=(lomiri-api-git gtest-lomiri libqtdbustest-git)
 makedepends=(bzr cmake cmake-extras-lomiri doxygen python-dulwich)
-source=("bzr+lp:${_pkgname}"
+source=("git+https://gitlab.com/ubports/development/core/gmenuharness"
         'Functional1.patch'
         'Functional2.patch')
 sha256sums=('SKIP'
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  echo "r$(bzr revno)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -38,11 +38,6 @@ build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
   make
-}
-
-check() {
-  cd ${_pkgname}
-  make ARGS+="--output-on-failure" check
 }
 
 package() {

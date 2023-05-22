@@ -1,0 +1,27 @@
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
+pkgname=gtest-lomiri
+pkgver=1.10.0
+pkgrel=1
+pkgdesc='Google Test - C++ testing utility'
+url='https://gitlab.com/ubports/development/core/packaging/googletest'
+arch=('aarch64')
+license=('BSD')
+depends=('gcc-libs' 'sh')
+makedepends=('python' 'cmake' 'gcc-libs' 'sh')
+conflicts=('gtest')
+replaces=('gtest')
+provides=('gtest')
+source=(git+https://gitlab.com/ubports/development/core/packaging/googletest)
+sha512sums=('SKIP')
+
+build() {
+ cmake -Hgoogletest -Bbuild \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON
+  cmake --build build
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --build build --target install
+}

@@ -11,7 +11,7 @@ license=(LGPL GPL)
 conflicts=(biometryd)
 provides=(biometryd)
 depends=(qt5-es2-base qt5-es2-declarative dbus-cpp apparmor process-cpp properties-cpp boost-libs libelf sqlite)
-makedepends=(git cmake boost cmake-extras-lomiri gtest gmock)
+makedepends=(git cmake boost cmake-extras-lomiri gtest-lomiri)
 checkdepends=()
 source=('git+https://gitlab.com/ubports/development/core/biometryd'
         'disable-tests.patch')

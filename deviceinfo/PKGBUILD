@@ -2,7 +2,7 @@
 
 pkgname=deviceinfo-git
 _pkgname=deviceinfo
-pkgver=r75.fe939f0
+pkgver=r86.5e4d0fa
 pkgrel=1
 pkgdesc='Device Info for Mir'
 url='https://gitlab.com/ubports/development/core/deviceinfo.git#branch=main'
@@ -11,7 +11,7 @@ license=(GPLv3)
 conflicts=(deviceinfo)
 provides=(deviceinfo)
 depends=()
-makedepends=(git yaml-cpp gtest cmake-extras-lomiri)
+makedepends=(git yaml-cpp gtest-lomiri cmake-extras-lomiri)
 source=('git+https://gitlab.com/ubports/development/core/deviceinfo.git#branch=main')
 sha256sums=('SKIP')
 

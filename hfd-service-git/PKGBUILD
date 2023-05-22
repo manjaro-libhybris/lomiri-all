@@ -2,7 +2,7 @@
 
 pkgname="hfd-service-git"
 _pkgname="hfd-service"
-pkgver=r35.8d6e2e1
+pkgver=r74.04ff43e
 pkgrel=1
 pkgdesc="Human Feedback Service for Lomiri UI"
 arch=("i686" "x86_64" "aarch64")
@@ -26,7 +26,7 @@ build() {
    mkdir -p build
    cd build
    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_SYSCONFDIR=/etc -DENABLE_LIBHYBRIS=off
-   make
+   make -j8
 }
 
 package() {

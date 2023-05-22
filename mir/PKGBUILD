@@ -9,8 +9,8 @@ pkgdesc="Canonical's display server"
 url='https://gitlab.com/ubports/development/core/mir'
 arch=(x86_64 i686 aarch64)
 license=(GPL LGPL)
-depends=(gtest boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
-makedepends=(git glm doxygen cmake boost gcovr gmock lcov valgrind python-dbusmock umockdev wlcs-lomiri)
+depends=(gtest-lomiri boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
+makedepends=(git glm doxygen cmake boost gcovr gtest-lomiri lcov valgrind python-dbusmock umockdev wlcs-lomiri)
 source=("git+https://gitlab.com/ubports/development/core/mir"
         "68480bc9654191b615b0e7b80c8a87599a417470.patch"
         "b8c2da5871a805602f40fc30abe1a6ac619916e2.patch"

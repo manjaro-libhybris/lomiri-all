@@ -2,7 +2,7 @@
 
 pkgname=persistent-cache-cpp-git
 _pkgname=persistent-cache-cpp
-pkgver=r125.1.0.5.r7.gb93792f
+pkgver=r127.1.0.5.r9.gae7b4e4
 pkgrel=1
 pkgdesc='A cache of key-value pairs with persistent storage for C++'
 url='https://gitlab.com/ubports/core/lib-cpp/persistent-cache-cpp'
@@ -11,11 +11,9 @@ license=(LGPL)
 conflicts=(persistent-cache-cpp)
 provides=(persistent-cache-cpp)
 depends=(boost leveldb valgrind)
-makedepends=(git cmake cmake-extras-lomiri doxygen graphviz lcov gcovr gtest gmock)
-source=("git+https://gitlab.com/ubports/core/lib-cpp/persistent-cache-cpp.git"
-        "0001-Add-missing-array-includes.patch")
-sha256sums=('SKIP'
-            '0b88e744ad60335b22e848a6ce05b929e7ddcb1ae97fb3aac2406303a191887f')
+makedepends=(git cmake cmake-extras-lomiri doxygen graphviz lcov gcovr gtest-lomiri)
+source=("git+https://gitlab.com/ubports/core/lib-cpp/persistent-cache-cpp.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
@@ -27,18 +25,6 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
   make
 }
-
-prepare() {
-    cd ${_pkgname}
-    for i in "${srcdir}/"*.patch; do
-        patch -Np1 -i "$i"
-    done
-}
-
-#check() {
-#  cd ${_pkgname}
-#  make ARGS+="--output-on-failure" test
-#}
 
 package() {
   cd ${_pkgname}
