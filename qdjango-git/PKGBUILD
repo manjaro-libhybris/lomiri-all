@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd ${_pkgname}/build
-  make INSTALL_ROOT="${pkgdir}/" install
-  rm -r ${pkgdir}/usr/tests/
+  make DESTDIR="${pkgdir}/" install || true
+  rm -rf ${pkgdir}/usr/tests/
 }
 # vim:set ts=2 sw=2 et:

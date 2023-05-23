@@ -11,7 +11,7 @@ license=()
 conflicts=(lomiri-system-compositor)
 provides=(lomiri-system-compositor)
 depends=(boost mir dbus gdk-pixbuf2 glib2 mesa glm wayland deviceinfo)
-makedepends=(git gmock cmake cmake-extras-lomiri)
+makedepends=(git gtest-lomiri cmake cmake-extras-lomiri)
 source=('git+https://gitlab.com/ubports/development/core/lomiri-system-compositor')
 sha256sums=('SKIP')
 

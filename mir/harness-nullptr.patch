@@ -1,0 +1,14 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/mir/tests/platform_test_harness/graphics_platform_test_harness.cpp b/mir/tests/platform_test_harness/graphics_platform_test_harness.cpp
+--- mir/tests/platform_test_harness/graphics_platform_test_harness.cpp	2023-05-23 00:44:05.348382983 +0000
++++ mir/tests/platform_test_harness/graphics_platform_test_harness.cpp	2023-05-23 00:44:11.744665637 +0000
+@@ -234,7 +234,8 @@ auto test_display_construction(mir::grap
+ 
+ auto test_display_supports_gl(mg::Display& display) -> bool
+ {
+-    if (dynamic_cast<mir::renderer::gl::ContextSource*>(&display))
++    auto* context_source = dynamic_cast<mir::renderer::gl::ContextSource*>(&display);
++    if (context_source)
+     {
+         std::cout << "Display supports GL context creation" << std::endl;
+         return true;

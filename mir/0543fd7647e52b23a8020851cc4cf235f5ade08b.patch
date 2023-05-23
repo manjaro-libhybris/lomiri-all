@@ -1,0 +1,28 @@
+From 9c9135aa9f196fb91daa5f4be0ae70094a1a1931 Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Sat, 26 Mar 2022 12:04:09 +0200
+Subject: [PATCH] Add missing stdexcept include to mirserverhooks
+
+This fixes a bunch of errors like the following while building against
+musl libc:
+
+  ../src/miroil/mir_server_hooks.cpp: In member function 'std::shared_ptr<mir::scene::PromptSessionManager> miroil::MirServerHooks::the_prompt_session_manager() const':
+  ../src/miroil/mir_server_hooks.cpp:164:16: error: 'logic_error' is not a member of 'std'
+    164 |     throw std::logic_error("No prompt session manager available. Server not running?");
+        |                ^~~~~~~~~~~
+---
+ src/miroil/mir_server_hooks.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/miroil/mir_server_hooks.cpp b/src/miroil/mir_server_hooks.cpp
+index f0d209f077..1a8e5a71fa 100644
+--- a/src/miroil/mir_server_hooks.cpp
++++ b/src/miroil/mir_server_hooks.cpp
+@@ -17,6 +17,7 @@
+  */
+ 
+ #include <miroil/mir_server_hooks.h>
++#include <stdexcept>
+ 
+ // mir
+ #include <mir/server.h>

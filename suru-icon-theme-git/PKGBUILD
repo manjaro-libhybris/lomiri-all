@@ -1,0 +1,28 @@
+# Maintainer: Marius Gripsgard <marius@ubports.com>
+
+pkgname=suru-icon-theme-git
+_pkgname=suru-icon-theme
+pkgver=r118.2b832bd
+pkgrel=1
+pkgdesc="Suru Icon Theme for Lomiri Operating Environment"
+arch=(any)
+url="https://gitlab.com/ubports/development/core/suru-icon-theme"
+license=(CCPL)
+depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme
+         gtk-engine-murrine)
+makedepends=(imagemagick icon-naming-utils)
+provides=(light-themes ubuntu-mono ubuntu-themes)
+conflicts=(light-themes ubuntu-mono ubuntu-themes)
+source=("git+https://gitlab.com/ubports/development/core/suru-icon-theme")
+md5sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd ${_pkgname}
+  install -dm755 "${pkgdir}/usr/share/icons/"
+  cp -av suru/ "${pkgdir}/usr/share/icons/"
+}

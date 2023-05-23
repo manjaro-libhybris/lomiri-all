@@ -1,0 +1,39 @@
+# Maintainer:  Iwan Timmer <irtimmer@gmail.com>
+
+pkgname=process-cpp
+pkgdesc="C++11 library for handling processes"
+pkgver=r157.ee6d99a
+pkgrel=1
+arch=('x86_64' 'aarch64')
+url="https://gitlab.com/ubports/development/core/lib-cpp/process-cpp"
+license=('LGPL3')
+depends=('boost-libs' 'gcc-libs')
+makedepends=('cmake' 'doxygen' 'boost' 'properties-cpp')
+source=("git+https://gitlab.com/ubports/development/core/lib-cpp/process-cpp")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f 1
+}
+
+prepare() {
+  cd "${pkgname}"
+
+  # Don't build tests
+  truncate -s 0 tests/CMakeLists.txt
+}
+
+build() {
+  mkdir -p "${pkgname}/build"
+  cd "${pkgname}/build"
+
+  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  make
+}
+
+package() {
+  cd "${pkgname}/build"
+
+  make DESTDIR="$pkgdir/" install
+}

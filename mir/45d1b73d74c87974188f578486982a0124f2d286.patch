@@ -1,0 +1,40 @@
+From b997bf4eb2472ff6aee49be94f7dbd2360a0368f Mon Sep 17 00:00:00 2001
+From: William Wold <wm@wmww.sh>
+Date: Mon, 22 Mar 2021 11:42:39 -0700
+Subject: [PATCH] Add protobuf symbols needed to build on Arch now
+
+---
+ src/protobuf/symbols.map | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/protobuf/symbols.map b/src/protobuf/symbols.map
+index 474e02574c..2b68f7386f 100644
+--- a/src/protobuf/symbols.map
++++ b/src/protobuf/symbols.map
+@@ -1159,7 +1159,7 @@ MIR_PROTOBUF_0.27 {
+   };
+ } MIR_PROTOBUF_0.26;
+ 
+-# When building with the Fedora 26 toolchain these are needed
++# When building with the Fedora 26 or Arch toolchains these are needed
+ MIR_PROTOBUF_FEDORA {
+  global:
+   extern "C++" {
+@@ -1180,6 +1180,17 @@ MIR_PROTOBUF_FEDORA {
+     mir::protobuf::_SurfaceId_default_instance_;
+     mir::protobuf::_SurfaceSpecification_default_instance_;
+     mir::protobuf::_Rectangle_default_instance_;
++    mir::protobuf::_ConnectParameters_default_instance_;
++    mir::protobuf::_Connection_default_instance_;
++    mir::protobuf::_Void_default_instance_;
++    mir::protobuf::_PlatformOperationMessage_default_instance_;
++    mir::protobuf::_Surface_default_instance_;
++    mir::protobuf::_SurfaceSetting_default_instance_;
++    mir::protobuf::_Screencast_default_instance_;
++    mir::protobuf::_SocketFD_default_instance_;
++    mir::protobuf::_PromptSessionParameters_default_instance_;
++    mir::protobuf::_PromptSession_default_instance_;
++    mir::protobuf::wire::_Result_default_instance_;
+     mir::protobuf::*::InternalSwap*;
+   };
+ } MIR_PROTOBUF_0.27;

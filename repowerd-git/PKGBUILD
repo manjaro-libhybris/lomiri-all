@@ -9,7 +9,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://gitlab.com/ubports/development/core/repowerd"
 license=("GPL3")
 depends=("glib2" "systemd" "qt5-es2-base" "deviceinfo" "dbus")
-makedepends=("cmake" "cmake-extras" "gmock")
+makedepends=("cmake" "cmake-extras" "gtest-lomiri")
 source=("git+https://gitlab.com/ubports/development/core/repowerd"
         "0001-Allow-to-be-built-without-hybris-android-papi-suppor.patch"
         "0002-Fix-warning-on-newer-gcc.patch"

@@ -9,9 +9,8 @@ pkgdesc='Qt Components for Ubuntu'
 url='https://gitlab.com/ubports/development/core/lomiri-ui-toolkit'
 arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
-depends=(qt5-es2-base qt5-quickcontrols lttng-ust libnih qt5-systems qt5-pim qt5-svg qt5-feedback lomiri-themes-git qt5-graphicaleffects bluez-libs)
+depends=(qt5-es2-base qt5-quickcontrols lttng-ust libnih qt5-systems qt5-pim qt5-svg qt5-feedback suru-icon-theme-git qt5-graphicaleffects bluez-libs)
 makedepends=(git)
-checkdepends=()
 source=('git+https://gitlab.com/ubports/development/core/lomiri-ui-toolkit.git'
         'NoWarns.patch'
         'dpkg.patch')

@@ -10,7 +10,7 @@ arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL)
 conflicts=(ubuntu-download-manager)
 provides=(lomiri-download-manager)
-depends=(boost dbus-test-runner gmock qt5-es2-base qt5-es2-declarative libnih google-glog clang)
+depends=(boost dbus-test-runner gtest-lomiri qt5-es2-base qt5-es2-declarative libnih google-glog clang)
 makedepends=(git doxygen cmake cmake-extras-lomiri gcovr lcov)
 source=('git+https://gitlab.com/ubports/development/core/lomiri-download-manager.git'
         'QtArg.patch')

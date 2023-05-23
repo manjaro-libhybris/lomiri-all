@@ -2,14 +2,14 @@
 
 pkgname=lomiri-ui-extras-git
 _pkgname=lomiri-ui-extras
-pkgver=r602.8fecad1
+pkgver=r753.ff63e1f
 pkgrel=1
 pkgdesc="Lomiri UI toolkit extras for Mobile Devices"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://gitlab.com/ubports/development/core/lomiri-ui-extras"
 license=('GPL3')
 depends=(qt5-es2-base qt5-es2-declarative libcups exiv2)
-makedepends=('git' 'cmake' 'cmake-extras')
+makedepends=('git' 'cmake' 'cmake-extras-lomiri')
 source=('git+https://gitlab.com/ubports/development/core/lomiri-ui-extras')
 md5sums=('SKIP')
 
