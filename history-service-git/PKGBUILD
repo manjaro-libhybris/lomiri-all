@@ -23,6 +23,11 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f 1
 }
 
+prepare() {
+  cd ${_pkgname}
+  sed -i 's/-std=c++11/-std=c++17 -Wno-error=register/g' CMakeLists.txt
+}
+
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-error -Wno-error=deprecated -std=c++14" -DCMAKE_INSTALL_LIBDIR="lib/" .

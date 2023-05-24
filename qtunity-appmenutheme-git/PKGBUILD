@@ -2,7 +2,7 @@
 
 pkgname=qtunity-appmenutheme-git
 _pkgname=qtunity-appmenutheme
-pkgver=r2204.484e3e5
+pkgver=r2205.19d7d38
 pkgrel=1
 pkgdesc='Qt platform theme for exported application menus'
 url='https://gitlab.com/ubports/core/qtunity-appmenutheme'

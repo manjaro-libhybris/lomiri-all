@@ -1,0 +1,48 @@
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
+pkgname=lomiri-system-settings-git
+_pkgname=lomiri-system-settings
+pkgver=r8215.eaad4348
+pkgrel=1
+pkgdesc="Lomiri System Settings"
+arch=('x86_64' 'armv7' 'aarch64')
+url="https://gitlab.com/ubports/development/core/lomiri-system-settings/"
+license=('GPL3')
+depends=(qt5-es2-base qt5-es2-declarative qqc2-suru-style-git)
+provides=(lomiri-system-settings)
+conflicts=(lomiri-system-settings)
+makedepends=('git' 'cmake' 'intltool' 'cmake-extras-lomiri' 'qt5-es2-declarative' 'qt5-es2-base' 'dbus-test-runner' 'gnome-desktop' 'accountsservice')
+source=('git+https://gitlab.com/ubports/development/core/lomiri-system-settings/'
+        'language-plugin.patch')
+sha256sums=('SKIP'
+            '2ff80820f7d1d6fdec1e34b12944a865d8152e135b31eec823cffe79499335b5')
+
+prepare() {
+    mkdir -p build
+    cd ${_pkgname}
+
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np1 < "../$src"
+    done
+}
+
+pkgver() {
+  cd ${_pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd build
+  cmake ../${_pkgname} . -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var -DCLICK_MODE=off
+  make
+}
+
+package() {
+  cd build
+  make DESTDIR="$pkgdir/" install
+}

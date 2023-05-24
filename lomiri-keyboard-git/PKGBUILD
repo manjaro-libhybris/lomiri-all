@@ -3,8 +3,8 @@
 
 pkgname=lomiri-keyboard-git
 _pkgname=lomiri-keyboard
-pkgver=r2086.geaa3d713
-pkgrel=6
+pkgver=r2312.gf8c368dd
+pkgrel=1
 pkgdesc="Lomiri Maliit Keyboard"
 arch=('aarch64')
 url="https://gitlab.com/ubports/development/core/lomiri-keyboard"
@@ -14,14 +14,8 @@ depends=('maliit-framework' 'qt5-feedback' 'qt5-es2-multimedia' 'gsettings-qt-gi
          'hunspell' 'libchewing' 'presage-git' 'libpinyin' 'sqlite' 'anthy')
 makedepends=('git' 'cmake')
 source=("git+https://gitlab.com/ubports/development/core/lomiri-keyboard"
-        "fix-for-newer-cpp.patch"
-        "hack-maliit-dirs.patch"
-        "https://github.com/maliit/keyboard/commit/269646fd87ef79118493011fae3a3c30ac395586.patch"
-        "https://github.com/maliit/keyboard/commit/e8bbad0d78eb2ca75b47e0d9e71b3c40c2e268bc.patch")
+        "e8bbad0d78eb2ca75b47e0d9e71b3c40c2e268bc.patch")
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'         
-         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -31,16 +25,12 @@ pkgver() {
 
 prepare() {
     cd $_pkgname
-
-    patch -Np1 -i "${srcdir}/fix-for-newer-cpp.patch"
-    patch -Np1 -i "${srcdir}/hack-maliit-dirs.patch"
-    patch -Np1 -i "${srcdir}/269646fd87ef79118493011fae3a3c30ac395586.patch"
     patch -Np1 -i "${srcdir}/e8bbad0d78eb2ca75b47e0d9e71b3c40c2e268bc.patch"
 }
 
 build() {
     cd ${_pkgname}
-    qmake CONFIG+=no_docs CONFIG+=notests INCLUDEPATH+="/usr/include/maliit-2" QMAKE_CXXFLAGS+="-I/usr/include/maliit-2"
+    qmake CONFIG+=no_docs CONFIG+=notests INCLUDEPATH+="/usr/include/maliit-2" QMAKE_CXXFLAGS+="-I/usr/include/maliit-2 -std=c++14"
     make
 }
 

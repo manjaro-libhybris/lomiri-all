@@ -2,7 +2,7 @@
 
 pkgname=libertine-git
 _pkgname=libertine
-pkgver=r467.e1c5b7b
+pkgver=r977.1a0f464
 pkgrel=1
 pkgdesc='A sandbox for running legacy deb-based X11 applications'
 url='https://gitlab.com/ubports/development/core/libertine'
@@ -11,11 +11,18 @@ license=(GPL3)
 conflicts=(libertine)
 provides=(libertine)
 depends=(python3 gtest-lomiri qt5-es2-base qt5-quickcontrols)
-makedepends=(git cmake cmake-extras-lomiri dbus-test-runner intltool)
+makedepends=(git cmake cmake-extras-lomiri dbus-test-runner intltool lomiri-system-settings-git)
 source=('git+https://gitlab.com/ubports/development/core/libertine')
 sha256sums=('SKIP')
 
 BUILDENV+=('!check') # Some tests are broken
+
+prepare() {
+  cd "${_pkgname}"
+
+  # Don't build tests
+  truncate -s 0 tests/CMakeLists.txt
+}
 
 pkgver() {
   cd ${_pkgname}

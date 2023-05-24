@@ -51,11 +51,12 @@ prepare() {
 package_mir() {
     cd mir/build
     make DESTDIR="${pkgdir}/" install
-
-    # cleanup
-    rm -f ${pkgdir}/usr/bin/miral-{shell,kiosk,app,terminal,shell,system-compositor}
-    rm -f ${pkgdir}/usr/bin/{mir-shell,mir-smoke-test-runner}
-    rm -f ${pkgdir}/usr/bin/fake-mir-kiosk
-    rm -f ${pkgdir}/usr/share/{applications,wayland-sessions}/miral-shell.desktop
-    rm -f ${pkgdir}/usr/share/icons/hicolor/scalable/apps/ubuntu-logo.svg
+    cd ../../
+    mkdir -p "${pkgdir}/usr/include/"
+    cp -rv "${pkgname}/include/client" "${pkgdir}/usr/include/mirclient"
+    cp -rv "${pkgname}/include/test" "${pkgdir}/usr/include/mirtest"
+    cp -rv "${pkgname}/include/renderers" "${pkgdir}/usr/include/mirrenderers"
+    mkdir -p "${pkgdir}/usr/include/mir_toolkit"
+    cp -rv ${pkgname}/include/client/mir_toolkit/* "${pkgdir}/usr/include/mir_toolkit/"
+    cp -rv ${pkgname}/include/core/mir_toolkit/* "${pkgdir}/usr/include/mir_toolkit/"
 }

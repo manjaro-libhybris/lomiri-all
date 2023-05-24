@@ -41,12 +41,15 @@ build() {
   cd ${_pkgname}
   mkdir -p ${BUILD_DIR}
   cd ${BUILD_DIR}
-  CXXFLAGS=-Wno-error=maybe-uninitialized cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DBUILD_TESTING=OFF ..
-  make -j8
+  CXXFLAGS=-Wno-error=maybe-uninitialized cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_LIBEXECDIR="lib/" -DBUILD_TESTING=OFF ..
+  make -j$(nproc)
 }
 
 package() {
   cd ${_pkgname}/${BUILD_DIR}
   make DESTDIR="${pkgdir}/" install
   mv ${pkgdir}/usr/lib/qt5/ ${pkgdir}/usr/lib/qt/
+  mv ${pkgdir}/lib/systemd/ ${pkgdir}/usr/lib/
+  rm ${pkgdir}/lib -r
+  sed -i 's/lxc-android-config.service/lxc@android.service/g' ${pkgdir}/usr/lib/systemd/system/biometryd.service
 }

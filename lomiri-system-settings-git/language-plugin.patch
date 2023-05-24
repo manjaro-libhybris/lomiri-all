@@ -1,0 +1,18 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/plugins/language/language-plugin.cpp b/plugins/language/language-plugin.cpp
+--- a/plugins/language/language-plugin.cpp	2023-05-23 20:48:20.538883998 +0000
++++ b/plugins/language/language-plugin.cpp	2023-05-23 20:48:36.595199831 +0000
+@@ -341,10 +341,10 @@ LanguagePlugin::updateCurrentLanguage()
+             QString formatsLocale(m_languageCodes[m_currentLanguage]);
+             QString language(formatsLocale.left(formatsLocale.indexOf('.')));
+             act_user_set_language(m_user, qPrintable(language));
+-            act_user_set_formats_locale(m_user, qPrintable(formatsLocale));
++//            act_user_set_formats_locale(m_user, qPrintable(formatsLocale));
+         } else {
+-            QString formatsLocale(act_user_get_formats_locale(m_user));
+-            m_currentLanguage = indexForLocale(formatsLocale);
++//            QString formatsLocale(act_user_get_formats_locale(m_user));
++//            m_currentLanguage = indexForLocale(formatsLocale);
+ 
+             if (m_currentLanguage < 0) {
+                 QString language(act_user_get_language(m_user));

@@ -18,11 +18,6 @@ sha256sums=('SKIP')
 #--   Package 'wpsapi', required by 'virtual:world', not found
 BUILDENV+=('!check')
 
-prepare() {
-  cd ${_pkgname}
-  git checkout bionic
-}
-
 pkgver() {
   cd ${_pkgname}
   echo "r$(git rev-list --count HEAD).$(git describe --always)"

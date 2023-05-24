@@ -2,7 +2,7 @@
 
 pkgname=lomiri-thumbnailer-git
 _pkgname=lomiri-thumbnailer
-pkgver=r1978.3.0.0.r6.g5ea5dc7
+pkgver=r1990.3.0.1
 pkgrel=1
 pkgdesc='D-Bus service for out of process thumbnailing'
 url='https://gitlab.com/ubports/development/core/lomiri-thumbnailer'
