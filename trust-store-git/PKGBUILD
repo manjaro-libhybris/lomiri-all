@@ -2,7 +2,7 @@
 
 pkgname=trust-store-git
 _pkgname=trust-store
-pkgver=r488.6c37311
+pkgver=r436.b8ac7fb
 pkgrel=1
 pkgdesc='C++11 library for persisting trust requests'
 url='https://gitlab.com/ubports/development/core/trust-store'
@@ -12,7 +12,7 @@ conflicts=(trust-store)
 provides=(trust-store)
 depends=(qt5-es2-base qt5-quickcontrols boost dbus-cpp gtest-lomiri lcov gcovr mir apparmor properties-cpp)
 makedepends=(git cmake cmake-extras-lomiri doxygen graphviz)
-source=('git+https://gitlab.com/ubports/development/core/trust-store')
+source=('git+https://gitlab.com/ubports/development/core/trust-store#branch=ubports/xenial')
 sha256sums=('SKIP')
 
 BUILDENV+=('!check')
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
+  sed -i 's/pkg_check_modules(MIR_CLIENT mirclient REQUIRED)//g' CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
   make
 }

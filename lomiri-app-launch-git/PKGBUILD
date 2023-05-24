@@ -3,7 +3,7 @@
 pkgbase=lomiri-app-launch
 pkgname=(lomiri-app-launch-git)
 _pkgname=lomiri-app-launch
-pkgver=r3158.0.1.6.r5.g01675ca
+pkgver=r3081.0.0.90.r35.g22afcb4
 pkgrel=1
 pkgdesc='Session init system job for Launching Applications'
 url='https://gitlab.com/ubports/development/core/lomiri-app-launch'
@@ -11,11 +11,13 @@ arch=(x86_64 i686 armv7h aarch64)
 license=(GPL)
 depends=(zeitgeist gobject-introspection lttng-ust lomiri-api-git properties-cpp curl click-git)
 makedepends=(git cmake  cmake-extras-lomiri dbus-test-runner gtest-lomiri lcov gcovr)
-source=('git+https://gitlab.com/ubports/development/core/lomiri-app-launch'
+source=('git+https://gitlab.com/ubports/development/core/lomiri-app-launch#branch=ubports/focal_-_miroil-2.0'
         'get-arch.patch'
+        'include-array.patch'
         'triplet')
 sha256sums=('SKIP'
-            '3c79b3a98160f85ee672901ef4abab2657c9ec6a606b7af45ecb007c53a7dd21'
+            '78027e41e375d3ec5819980bf779a3029504def41fb4ace43a3d5338565133cd'
+            '8111413cc321ba3283717a48abecec84734e50478ded02747540db3c952ec727'
             'ffd586b2213a62a2bbe91e0fb540749cee379cedf6fc58a405c26982db4731fc')
 
 BUILDENV+=('!check') # Some tests are broken
@@ -28,7 +30,7 @@ prepare() {
       src="${src##*/}"
       [[ $src = *.patch ]] || continue
       echo "Applying patch $src..."
-      patch -N < "../$src"
+      patch -Np1 < "../$src"
     done
 
     truncate -s 0 tests/CMakeLists.txt
@@ -43,7 +45,8 @@ build() {
   cd ${_pkgname}
   cp ../../triplet triplet
   sed -i 's/-std=gnu99/-std=gnu99 -Wno-deprecated-declarations/g' CMakeLists.txt
-  sed -i 's/-std=c++17/-std=c++17 -Wno-deprecated-declarations/g' CMakeLists.txt
+  sed -i 's/-std=c++11/-std=c++11 -Wno-deprecated-declarations/g' CMakeLists.txt
+  sed -i 's/pkg_check_modules(MIR REQUIRED mirclient)//g' CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_LIBEXECDIR="lib/" .
   make
 }

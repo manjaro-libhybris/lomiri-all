@@ -2,7 +2,7 @@
 
 pkgname=indicator-network-git
 _pkgname=lomiri-indicator-network
-pkgver=r2162.ea27f11
+pkgver=r2442.1.0.0
 pkgrel=1
 pkgdesc='Network indicator'
 url='https://gitlab.com/ubports/development/core/lomiri-indicator-network'
@@ -10,23 +10,31 @@ arch=(x86_64 i686 armv7h aarch64)
 license=(LGPL3 GPL3)
 conflicts=(indicator-network)
 provides=(indicator-network)
-depends=(lcov gcovr gsettings-qt ofono url-dispatcher-git libqofono-qt5 libqtdbustest-git libqtdbusmock-git gmenuharness-bzr)
+depends=(lcov gcovr gsettings-qt ofono libqofono-qt5 libqtdbustest-git libqtdbusmock-git gmenuharness-bzr url-dispatcher-git)
 makedepends=(git cmake cmake-extras-lomiri doxygen)
 checkdepends=()
 source=('git+https://gitlab.com/ubports/development/core/lomiri-indicator-network.git'
         'fix-systemd.patch')
 sha256sums=('SKIP'
-            'c56f15c39832d62cbf6c7e158a08293c3e9764cdb16b6e1e841201c940dfc6cb')
+            '4f2a63e719e103ad8c8b1ff14d4c2fe1dabe904e0ab522a0d64230c6278cc131')
 BUILDENV+=('!check') # Hangs
 
 pkgver() {
   cd ${_pkgname}
-  echo "r$(git rev-list --count HEAD).$(git describe --always)"
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f 1
 }
 
 prepare() {
-  cd ${_pkgname}
-  patch -Np1 -i "${srcdir}/fix-systemd.patch"
+    cd ${_pkgname}
+
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np1 < "../$src"
+    done  
 }
 
 build() {

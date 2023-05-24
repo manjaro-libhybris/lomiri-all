@@ -2,7 +2,7 @@
 
 pkgname=telephony-service-git
 _pkgname=telephony-service
-pkgver=r4679.37272505
+pkgver=r4843.0.5.1
 pkgrel=1
 pkgdesc='Telephony Service is a backend dispatcher service for various mobile phone related operations.'
 url='https://gitlab.com/ubports/development/core/telephony-service'
@@ -22,14 +22,19 @@ BUILD_DIR=build
 
 pkgver() {
   cd ${_pkgname}
-  echo "r$(git rev-list --count HEAD).$(git describe --always)"
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f 1
+}
+
+prepare() {
+  cd ${_pkgname}
+  sed -i 's/std=c++11/std=c++17/g' CMakeLists.txt
 }
 
 build() {
   cd ${_pkgname}
   mkdir -p ${BUILD_DIR}
   cd ${BUILD_DIR}
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DWANT_UI_SERVICES=OFF ..
   make
 }
 

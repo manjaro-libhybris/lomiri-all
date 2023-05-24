@@ -51,12 +51,16 @@ prepare() {
 package_mir() {
     cd mir/build
     make DESTDIR="${pkgdir}/" install
+
     cd ../../
     mkdir -p "${pkgdir}/usr/include/"
-    cp -rv "${pkgname}/include/client" "${pkgdir}/usr/include/mirclient"
-    cp -rv "${pkgname}/include/test" "${pkgdir}/usr/include/mirtest"
-    cp -rv "${pkgname}/include/renderers" "${pkgdir}/usr/include/mirrenderers"
+    cp -rfv "${pkgname}/include/client" "${pkgdir}/usr/include/mirclient"
+    cp -rfv "${pkgname}/include/test" "${pkgdir}/usr/include/mirtest"
+    cp -rfv "${pkgname}/include/renderers" "${pkgdir}/usr/include/mirrenderers"
+
     mkdir -p "${pkgdir}/usr/include/mir_toolkit"
-    cp -rv ${pkgname}/include/client/mir_toolkit/* "${pkgdir}/usr/include/mir_toolkit/"
-    cp -rv ${pkgname}/include/core/mir_toolkit/* "${pkgdir}/usr/include/mir_toolkit/"
+    cp -rfv ${pkgname}/include/client/mir_toolkit/* "${pkgdir}/usr/include/mir_toolkit/"
+    cp -rfv ${pkgname}/include/core/mir_toolkit/* "${pkgdir}/usr/include/mir_toolkit/"
+    
+    cp -rfv "${pkgname}/src/include/" "${pkgdir}/usr/include/mir"
 }

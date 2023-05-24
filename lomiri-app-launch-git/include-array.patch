@@ -1,0 +1,12 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/liblomiri-app-launch/jobs-base.cpp b/liblomiri-app-launch/jobs-base.cpp
+--- a/liblomiri-app-launch/jobs-base.cpp	2023-05-24 17:09:46.737108764 +0000
++++ b/liblomiri-app-launch/jobs-base.cpp	2023-05-24 17:09:51.673244858 +0000
+@@ -21,6 +21,7 @@
+ #include <cerrno>
+ #include <cstring>
+ #include <numeric>
++#include <array>
+ #include <lomiri/util/GObjectMemory.h>
+ #include <lomiri/util/GlibMemory.h>
+ #include <lomiri/util/ResourcePtr.h>

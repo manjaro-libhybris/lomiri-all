@@ -1,0 +1,52 @@
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
+pkgbase=mir-android2-platform-git
+pkgname=(mir-android2-platform-git)
+_pkgname=mir-android2-platform
+pkgver=r155.610fc92
+pkgrel=1
+url='https://gitlab.com/ubports/development/core/hybris-support/mir-android2-platform'
+arch=(x86_64 i686 armv7h aarch64)
+license=(LGPL)
+conflicts=(mir-android2-platform)
+provides=(mir-android2-platform)
+depends=(qt5-es2-base qt5-quickcontrols mir deviceinfo-git glm valgrind)
+makedepends=(git cmake cmake-extras-lomiri gtest-lomiri)
+source=('git+https://gitlab.com/ubports/development/core/hybris-support/mir-android2-platform')
+sha256sums=('SKIP')
+
+BUILDENV+=('!check')
+
+BUILD_DIR=build
+
+prepare() {
+  cd ${_pkgname}
+  truncate -s 0 tests/CMakeLists.txt
+  sed -i 's/pkg_check_modules(MIRCLIENT REQUIRED mirclient)//g' CMakeLists.txt
+  sed -i 's/android-headers-28/android-headers/g' CMakeLists.txt
+}
+
+pkgver() {
+  cd ${_pkgname}
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd ${_pkgname}
+  mkdir -p ${BUILD_DIR}
+  cd ${BUILD_DIR}
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DNO_TESTS=1 -DCMAKE_INSTALL_LIBDIR="lib/" ..
+  make
+}
+
+check() {
+  cd ${_pkgname}/${BUILD_DIR}
+  make ARGS+="--output-on-failure" test
+}
+
+package() {
+  pkgdesc='Mir is a display manager that provides efficient support for graphics coprocessors.'
+  cd ${_pkgname}/${BUILD_DIR}
+  make DESTDIR="${pkgdir}/" install
+}
+# vim:set ts=2 sw=2 et:
