@@ -1,13 +1,13 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=lomiri-mobile-session
-pkgver=0.1.3
-pkgrel=1
+pkgver=1
+pkgrel=2
 pkgdesc='Lomiri Mobile Session Scripts'
-url='https://gitlab.manjaro.org/manjaro-arm/packages/community/lomiri-dev/lomiri-mobile-session'
+url='https://github.com/manjaro-libhybris/lomiri-all/tree/main/lomiri-mobile-session'
 arch=(any)
 license=(LGPL3)
-depends=(inotify-tools unity8)
+depends=(inotify-tools lomiri)
 source=('run-systemd-session'
         'lomiri.service'
         'maliit-server.service'
@@ -42,5 +42,4 @@ package() {
     install -Dm755 "${srcdir}/lomiri-touch-session" -t "${pkgdir}/usr/bin/"
     install -Dm644 "${srcdir}/lomiri-touch.desktop" -t "${pkgdir}/usr/share/lightdm/sessions/"
     install -Dm644 "${srcdir}/52-lomiri-touch.conf" -t "${pkgdir}/usr/share/lightdm/lightdm.conf.d/"
-
 }

@@ -1,17 +1,17 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
-pkgname=lomiri-push-git
-_pkgname=lomiri-push
-pkgver=r2436.da470db
+pkgname=lomiri-push-service-git
+_pkgname=lomiri-push-service
+pkgver=r2556.fc80578
 pkgrel=1
 pkgdesc="Protocol, client, and development code for Ubuntu Touch push notifications"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/ubports/development/core/lomiri-push-service"
 license=('GPL')
 depends=()
-makedepends=('git' 'go' 'click' 'url-dispatcher' 'lomiri-app-launch-git' 'indicator-messages')
-provides=('lomiri-push')
-conflicts=('lomiri-push')
+makedepends=('git' 'go' 'click' 'url-dispatcher' 'lomiri-app-launch-git' 'lomiri-notifications')
+provides=('lomiri-push-service')
+conflicts=('lomiri-push-service')
 source=("git+https://gitlab.com/ubports/development/core/lomiri-push-service"
         0001-Remove-v0-suffix-from-go-xdg-imports.patch
         0002-Remove-v1-suffix-from-go-dbus-imports.patch
@@ -44,6 +44,6 @@ build(){
 
 package() {
   cd "$_pkgname"
-  install -Dm755 ubuntu-push-client "$pkgdir"/usr/bin/ubuntu-push-client
+  install -Dm755 lomiri-push-client "$pkgdir"/usr/bin/lomiri-push-client
   install -Dm755 push-server-dev "$pkgdir"/usr/bin/push-server-dev
 }
