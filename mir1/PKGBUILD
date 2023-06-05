@@ -1,0 +1,98 @@
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
+pkgbase=mir-lomiri
+pkgname=(mir)
+pkgver=1.8.2
+pkgrel=1
+pkgdesc="Canonical's display server"
+url='https://github.com/MirServer/mir'
+arch=(x86_64 i686 aarch64)
+license=(GPL LGPL)
+depends=(gtest-lomiri boost-libs capnproto google-glog gflags libglvnd  liburcu lttng-ust libepoxy libxml++2.6 nettle libinput libxkbcommon python-pillow freetype2 libevdev protobuf python-dbus python-gobject hicolor-icon-theme libxcursor yaml-cpp)
+makedepends=(git glm doxygen cmake boost gcovr gtest-lomiri lcov valgrind python-dbusmock umockdev wlcs-lomiri)
+_commit=0543fd7647e52b23a8020851cc4cf235f5ade08b
+source=("mir::https://github.com/MirServer/mir/archive/${_commit}.tar.gz"
+        "0001-Don-t-print-flout-due-to-bug-in-libhybris-that-make-.patch"
+        "0002-Nested-patchwork-Use-eglImage-for-software-buffers.patch"
+        "0003-Use-drmModeGetResources-as-fallback-for-modeset-prob.patch"
+        "0004-Increase-max-amount-of-data-ints-in-MirBufferPackage.patch"
+        "0005-Add-10bpp-2bpp-alpha-RGBA-pixel-format-to-MirPixelFo.patch"
+        "0006-NO-MERGE-Add-envar-to-enable-mirs-own-window-decor.patch"
+        "0007-DO-NOT-MERGE-Temp-fix-for-wrongly-scaled-buffers.patch"
+        "0008_Fix-more-missing-includes-for-GCC-11.patch"
+        "0008-wayland-platform-Allow-apply_to-to-set-scale-and-for.patch"
+        "0009-Revert-Merge-1366.patch"
+        "0009_use-python3.patch"
+        "0010-Wayland-platform-Compositing-shouldn-t-block.patch"
+        "0011-Enable-nested-platform-BufferAllocator-to-pass-Wayla.patch"
+        "0012-nested-make-shared-EGL-context-in-EGLDisplayHandle-c.patch"
+        "0013-fix-build-on-gcc11.patch"
+        "0014-Filter-out-some-confusing-libinput-events.patch"
+        "1001_typo-fixes.patch"
+        "1002_arch-indep-only-install-target.patch"
+        "1003-workaround-gcc-ICE-bug.patch"
+        "1004_xlib-workaround.patch"
+        "2001_dfsg-disable-shared-libraries-tests.patch"
+        "2002_dont-dpkg-gensymbols-by-upstream.patch"
+        "include-array-glib_main_loop_sources.patch"
+        "include-array-renderer.h.patch"
+        "include-array-mir_protobuf_rpc_channel.cpp.patch"
+        "include-array-test_prompt_session_client_api.cpp.patch"
+        "include-array-test_presentation_chain.cpp.patch")
+
+sha256sums=('SKIP'
+            '51a13b14d72d64acbe7a7060527b24704b9fbcc5679e11e53c658c325c1c4d04'
+            'd644341d714f96b15a98f1588b4959e8a71a07ee8ce01e0d92d82d20cb9b7284'
+            '77c0b3f8030a35adfc6e38bce6adc631e3baf6213d1fe421b0285fb9db4692d5'
+            'e4824190c17bad56727d1ea50059931bad77e97d6daa839c72a8eac292485447'
+            '56f894dbf55edb5a9ff8ae59236855db36b2b2e059535107a7c5672ca19d4487'
+            'd399f56c061968869a2e9fc1127c6449f7d813bd64bf3d84faa366d96190d70c'
+            '0e101cbf25142f2e49a90d184c4f979de3f5515593dec1f52cb91d6ee3e9e6f1'
+            'e1a098fab669a5c94082c8fc140597bbd53e464740eb6db70c54c8fa00fa45da'
+            '4b4d2f2be73139cb89abc19ffd0a53b086861fac5335f11650a52f938578ae34'
+            '9746f92d8d9455a4f4d479516b24babc90e9eaa11447415a2439aab223fbc680'
+            '83db64f26d6332c055d9b5d490ed4e7c72992da9689eda36ade80e02060b3828'
+            'ff1d0c97b0149dfb6e0ea8710bdf5596f908be09b01ddd18057cbbad2fc835d3'
+            '458cf94a2bffb7455355e9784ddcee66698d13be8e5b9790a5d9e8f0be474871'
+            '842701195b2dc23e8d1dbab0b19b28b186c8114301d6b15afe6f44ea7a0cf1a0'
+            'cafd037f671a17626b0f10d19135e4d737b608e1224bd671343cbc52d89fbd74'
+            '2bc6c69a4ee35a60feb54c0e655ca921b1b21fecc7ba34a657c19aa63562a37d'
+            'e386b995bf2e6b49be96d3abcc66ece85cedd14985f3407942b8517a061e8dde'
+            '2bf51f99467153bb336ae84c8c8e57bce90528bfed4423732fbbf4a7f377f0d8'
+            'd0857659cc802b951895a2d74550019fde0985871b489ab837b8a80a8ade1da7'
+            'e90ca7325b0f832bdb256b3967e7896b1a23b9cf22ae67f7c1ca36b6e0c382bf'
+            '887030ffa084487b0ca4fe2ea06e523f9045294289e04ca17101e510e1113bfe'
+            'd4d273d68598f4352b2c2f69dfed97b7eb42692689283b9cea0622dfb0f03c24'
+            '6231c10aa41036641e9c902c5de87f3e82d62be5dd628d890a3a6f113d04e2c8'
+            '463b74568a8e6c7ef2b53c558e604058fe1249e3a3b9e42b28b949fd163f3e49'
+            'e36c30443bd7107a7f0826edfa95f0034c387e9d16965de095a393e69d700c4e'
+            'a82d14fdc5fa01c04735682750f2845cc9d6edea85bff8ebe257a22e391e78fe'
+            '7fe5d6d1ca6facef3270f7bddfaa6446edb38306678b4c960c9f75bbb6b6af0f')
+
+build() {
+    cd mir-${_commit}
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DMIR_FATAL_COMPILE_WARNINGS=OFF -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-error -Wno-error=deprecated -Wno-error=address" -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var -DCMAKE_INSTALL_LIBEXECDIR=lib/mir -DMIR_BUILD_INTERPROCESS_TESTS=OFF -DMIR_ENABLE_WLCS_TESTS=OFF -DCMAKE_CXX_FLAGS="-Wno-deprecated-declarations -Wno-error -Wno-error=deprecated -Wno-error=unused-parameter -Wno-error=missing-field-initializers" DMIR_BUILD_ACCEPTANCE_TESTS=OFF -DMIR_BUILD_UNIT_TESTS=OFF -DMIR_PLATFORM=mesa-kms\;mesa-x11\;wayland ..
+    cmake --build ./
+}
+
+prepare() {
+    cd mir-${_commit}
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np1 < "../$src"
+    done
+}
+
+package_mir() {
+    cd mir-${_commit}/build
+    mkdir -p doc/html
+    mv doc/*.css doc/*.html doc/html || true
+    make DESTDIR="${pkgdir}/" install
+    rm -rf "${pkgdir}"/home
+}

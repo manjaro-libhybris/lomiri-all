@@ -1,4 +1,4 @@
-# Maintainer: Furkan Kardame <furkan@fkardame.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgbase=u1db-qt-git
 pkgname=(u1db-qt-git u1db-qt-demos-git)

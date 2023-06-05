@@ -12,18 +12,39 @@ conflicts=(mir-android2-platform)
 provides=(mir-android2-platform)
 depends=(qt5-es2-base qt5-quickcontrols mir deviceinfo-git glm valgrind)
 makedepends=(git cmake cmake-extras-lomiri gtest-lomiri)
-source=('git+https://gitlab.com/ubports/development/core/hybris-support/mir-android2-platform')
-sha256sums=('SKIP')
+source=('git+https://gitlab.com/ubports/development/core/hybris-support/mir-android2-platform'
+        'gralloc.h'
+        'include-string-native_window_report.h.patch'
+        'include-string-hwc_loggers.cpp.patch'
+        'include-array-hwc_loggers.cpp.patch')
+
+sha256sums=('SKIP'
+            '94ca1481e1de0297c124a2a241144bcab95a74740ce55e362dba844891c3a4c6'
+            '9836fd1d73cb2b37ab28bad37750176765425a940277c1e36d6d133b78972e36'
+            'e983b5c4c18253ae3b30f190297d365fa2fb21c42353ee5a24200e74ac7055df'
+            '8c3e5611c2101bf05f9d93ca719108c858dcc316091b043fae961452e620bdd0')
 
 BUILDENV+=('!check')
 
 BUILD_DIR=build
 
 prepare() {
-  cd ${_pkgname}
-  truncate -s 0 tests/CMakeLists.txt
-  sed -i 's/pkg_check_modules(MIRCLIENT REQUIRED mirclient)//g' CMakeLists.txt
-  sed -i 's/android-headers-28/android-headers/g' CMakeLists.txt
+    cd ${_pkgname}
+    truncate -s 0 tests/CMakeLists.txt
+#    sed -i 's/pkg_check_modules(MIRCLIENT REQUIRED mirclient)//g' CMakeLists.txt
+    sed -i 's/android-headers-28/android-headers/g' CMakeLists.txt
+
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np1 < "../$src"
+    done
+
+    cp ../gralloc.h src/platforms/android/include/hybris_gralloc_impl.h
+   sed -i 's#<hybris/gralloc/gralloc.h>#"gralloc.h"#g' src/platforms/android/common/hybris_gralloc_impl.cpp
 }
 
 pkgver() {

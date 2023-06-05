@@ -1,5 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
-# Contributor: Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=dbus-cpp
 pkgdesc='A header-only dbus-binding leveraging C++-11'

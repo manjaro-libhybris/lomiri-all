@@ -1,0 +1,11 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/src/platforms/android/include/native_window_report.h	2023-06-05 03:46:10.700397362 +0000
++++ b/src/platforms/android/include/native_window_report.h	2023-06-05 03:46:09.292362438 +0000
+@@ -21,6 +21,7 @@
+ #include <system/window.h>
+ #include <vector>
+ #include <memory>
++#include <string>
+ 
+ namespace mir
+ {

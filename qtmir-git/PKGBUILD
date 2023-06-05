@@ -1,4 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgbase=qtmir-git
 pkgname=(qtmir-git)
@@ -12,8 +12,10 @@ conflicts=(qtmir)
 provides=(qtmir)
 depends=(qt5-es2-base qt5-quickcontrols qt5-sensors mir process-cpp lomiri-app-launch-git gsettings-qt-git libqtdbustest-git libqtdbusmock-git url-dispatcher-git glm valgrind)
 makedepends=(git cmake cmake-extras-lomiri gtest-lomiri)
-source=('git+https://gitlab.com/ubports/development/core/qtmir#branch=main')
-sha256sums=('SKIP')
+source=('git+https://gitlab.com/ubports/development/core/qtmir#branch=main'
+        'showspash-return-true.patch')
+sha256sums=('SKIP'
+            '44ea00039af89d97ac3a1c9fc310f0f381b50e8bfe3dc4c68542e6bc77fc6edb')
 
 BUILDENV+=('!check')
 
@@ -21,7 +23,7 @@ BUILD_DIR=build
 
 prepare() {
   cd ${_pkgname}
-  sed -i 's/pkg_check_modules(MIRCLIENT mirclient>=0.26 REQUIRED)//g' CMakeLists.txt
+#  sed -i 's/pkg_check_modules(MIRCLIENT mirclient>=0.26 REQUIRED)//g' CMakeLists.txt
 }
 
 pkgver() {

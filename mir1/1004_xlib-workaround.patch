@@ -1,0 +1,47 @@
+Description: work around Xlib/capnproto naming conflict in capnproto 0.9.1
+Origin: https://github.com/MirServer/mir/pull/2267
+
+--- a/src/platforms/mesa/server/x11/graphics/egl_helper.h
++++ b/src/platforms/mesa/server/x11/graphics/egl_helper.h
+@@ -19,6 +19,8 @@
+ #ifndef MIR_GRAPHICS_X11_EGL_HELPER_H_
+ #define MIR_GRAPHICS_X11_EGL_HELPER_H_
+ 
++#include <kj/one-of.h> // HACK for https://github.com/capnproto/capnproto/issues/1393
++
+ #include <memory>
+ #include <functional>
+ 
+--- a/src/platforms/mesa/server/x11/graphics/platform.h
++++ b/src/platforms/mesa/server/x11/graphics/platform.h
+@@ -19,6 +19,8 @@
+ #ifndef MIR_GRAPHICS_X_PLATFORM_H_
+ #define MIR_GRAPHICS_X_PLATFORM_H_
+ 
++#include <kj/one-of.h> // HACK for https://github.com/capnproto/capnproto/issues/1393
++
+ #include "mir/graphics/display_report.h"
+ #include "mir/graphics/platform.h"
+ #include "display_helpers.h"
+--- a/src/platforms/mesa/server/x11/input/input_platform.h
++++ b/src/platforms/mesa/server/x11/input/input_platform.h
+@@ -18,6 +18,8 @@
+ #ifndef MIR_INPUT_X_INPUT_PLATFORM_H_
+ #define MIR_INPUT_X_INPUT_PLATFORM_H_
+ 
++#include <kj/one-of.h> // HACK for https://github.com/capnproto/capnproto/issues/1393
++
+ #include "mir/input/platform.h"
+ #include <memory>
+ #include <X11/Xlib.h>
+--- a/tests/include/mir/test/doubles/mock_x11.h
++++ b/tests/include/mir/test/doubles/mock_x11.h
+@@ -19,6 +19,8 @@
+ #ifndef MIR_TEST_DOUBLES_MOCK_X11_H_
+ #define MIR_TEST_DOUBLES_MOCK_X11_H_
+ 
++#include <kj/one-of.h> // HACK for https://github.com/capnproto/capnproto/issues/1393
++
+ #include <gmock/gmock.h>
+ 
+ #include <X11/Xlib.h>

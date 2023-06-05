@@ -1,4 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=trust-store-git
 _pkgname=trust-store
@@ -12,10 +12,17 @@ conflicts=(trust-store)
 provides=(trust-store)
 depends=(qt5-es2-base qt5-quickcontrols boost dbus-cpp gtest-lomiri lcov gcovr mir apparmor properties-cpp)
 makedepends=(git cmake cmake-extras-lomiri doxygen graphviz)
-source=('git+https://gitlab.com/ubports/development/core/trust-store#branch=ubports/xenial')
-sha256sums=('SKIP')
+source=('git+https://gitlab.com/ubports/development/core/trust-store#branch=ubports/xenial'
+        'include-memory-xdg.h.patch'
+        'include-map-posix.h.patch')
+sha256sums=('SKIP'
+            '86a0eb150cf97e8c50694b9515f3d463b253653ad684d10fdbf49edd47c66896'
+            '0c7f776300ee18e177bde6d7cf2fbf0cabd0fbb806f7a4194050c3078389b18c')
 
 BUILDENV+=('!check')
+
+# ln -s /usr/include/mircore/mir_toolkit /usr/include/
+# cp -r /usr/include/mirclient/mir_toolkit/* /usr/include/mir_toolkit/
 
 pkgver() {
   cd ${_pkgname}
@@ -24,7 +31,7 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  sed -i 's/pkg_check_modules(MIR_CLIENT mirclient REQUIRED)//g' CMakeLists.txt
+#  sed -i 's/pkg_check_modules(MIR_CLIENT mirclient REQUIRED)//g' CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
   make
 }

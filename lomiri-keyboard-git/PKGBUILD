@@ -1,5 +1,4 @@
-# Maintainer: Philip Müller <philm@manjaro.org>
-# Contributor: Bhushan Shah <bshah@kde.org>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=lomiri-keyboard-git
 _pkgname=lomiri-keyboard

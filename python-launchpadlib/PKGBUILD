@@ -1,5 +1,4 @@
-# Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
-# based on the python2-launchpadlib PKGBUILD by ValHue <vhuelamo at gmail dot com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 _pkgname="launchpadlib"
 pkgname=("python-launchpadlib")

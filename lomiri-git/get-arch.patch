@@ -1,0 +1,13 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+diff -Npur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2023-06-05 04:41:30.097082346 +0000
++++ b/CMakeLists.txt	2023-06-05 04:42:45.386901045 +0000
+@@ -173,7 +173,7 @@ if(NOT QUIET_LOGGER)
+     set(STDOUT_LOGGER "-o" "-,txt")
+ endif()
+ 
+-execute_process(COMMAND dpkg-architecture -qDEB_HOST_ARCH OUTPUT_VARIABLE ARCH)
++execute_process(COMMAND ./triplet OUTPUT_VARIABLE ARCH)
+ if (NOT ARCH MATCHES "arm*")
+     set(ENABLE_TOUCH_EMULATION true)
+     add_definitions(-DLOMIRI_ENABLE_TOUCH_EMULATION)

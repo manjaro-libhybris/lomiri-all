@@ -1,4 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgbase=lomiri-app-launch
 pkgname=(lomiri-app-launch-git)
@@ -34,6 +34,8 @@ prepare() {
     done
 
     truncate -s 0 tests/CMakeLists.txt
+
+    cp ../../triplet triplet
 }
 
 pkgver() {
@@ -43,10 +45,9 @@ pkgver() {
 
 build() {
   cd ${_pkgname}
-  cp ../../triplet triplet
   sed -i 's/-std=gnu99/-std=gnu99 -Wno-deprecated-declarations/g' CMakeLists.txt
   sed -i 's/-std=c++11/-std=c++11 -Wno-deprecated-declarations/g' CMakeLists.txt
-  sed -i 's/pkg_check_modules(MIR REQUIRED mirclient)//g' CMakeLists.txt
+#  sed -i 's/pkg_check_modules(MIR REQUIRED mirclient)//g' CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_LIBEXECDIR="lib/" .
   make
 }

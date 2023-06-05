@@ -1,5 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
-# Contributor Spike29 <leguen.yannick@gmail.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=qdjango-git
 _pkgname=qdjango

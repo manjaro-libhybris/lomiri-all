@@ -1,4 +1,4 @@
-# Maintainer: Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=properties-cpp
 pkgdesc="A very simple convenience library for handling properties and signals in C++11"

@@ -1,6 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=perl-rpc-xml
 _pkgname='RPC-XML-0.80'

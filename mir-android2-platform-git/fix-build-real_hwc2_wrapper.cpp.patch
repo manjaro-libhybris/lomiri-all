@@ -1,0 +1,32 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/src/platforms/android/server/real_hwc2_wrapper.cpp	2023-06-05 03:58:41.235015084 +0000
++++ b/src/platforms/android/server/real_hwc2_wrapper.cpp	2023-06-05 04:06:37.054818817 +0000
+@@ -462,18 +462,18 @@ void mga::RealHwc2Wrapper::invalidate()
+         if (_last_present_fence < 0)
+             continue;
+ 
+-        struct sync_fence_info_data* fence_info = sync_fence_info(_last_present_fence);
+-        const bool frameMissed = (fence_info && fence_info->status != 1);
+-        if (fence_info)
+-            sync_fence_info_free(fence_info);
++//        struct sync_fence_info_data* fence_info = sync_fence_info(_last_present_fence);
++//        const bool frameMissed = (fence_info && fence_info->status != 1);
++//        if (fence_info)
++//            sync_fence_info_free(fence_info);
+ 
+         // Wait a short grace period before continuing
+-        if (frameMissed) {
+-            sync_wait(_last_present_fence, 1);
+-        }
+-        close(_last_present_fence);
+-        last_present_fence[display_id] = -1;
+-        missed_a_frame |= frameMissed;
++//        if (frameMissed) {
++//            sync_wait(_last_present_fence, 1);
++//        }
++//        close(_last_present_fence);
++//        last_present_fence[display_id] = -1;
++//        missed_a_frame |= frameMissed;
+     }
+ 
+     // Ok, we missed a frame on a screen..

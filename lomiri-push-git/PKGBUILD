@@ -1,3 +1,5 @@
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
 pkgname=lomiri-push-git
 _pkgname=lomiri-push
 pkgver=r2436.da470db

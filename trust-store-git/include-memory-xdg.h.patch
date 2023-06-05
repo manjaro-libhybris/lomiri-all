@@ -1,0 +1,11 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/3rd_party/xdg/xdg.h	2023-06-05 05:28:20.839450644 +0000
++++ b/3rd_party/xdg/xdg.h	2023-06-05 05:29:04.084522190 +0000
+@@ -19,6 +19,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <memory>
+ 
+ namespace xdg
+ {

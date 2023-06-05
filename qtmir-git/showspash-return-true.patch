@@ -1,0 +1,17 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/src/modules/QtMir/Application/upstart/applicationinfo.cpp	2023-06-05 03:24:14.583767645 +0000
++++ b/src/modules/QtMir/Application/upstart/applicationinfo.cpp	2023-06-05 03:23:15.574306411 +0000
+@@ -51,7 +51,7 @@ QUrl ApplicationInfo::icon() const
+ 
+ bool ApplicationInfo::showSplash() const
+ {
+-    return m_info->splash().show.value();
++    return true;
+ }
+ 
+ QString ApplicationInfo::splashTitle() const
+@@ -112,4 +112,3 @@ bool ApplicationInfo::isTouchApp() const
+ 
+ } // namespace upstart
+ } // namespace qtmir
+-

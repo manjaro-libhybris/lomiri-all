@@ -1,6 +1,4 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
-# Contributor: Cody P Schafer <archlinux at codyps.com>
-# Contributor: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=dbus-test-runner
 pkgver=15.04.0

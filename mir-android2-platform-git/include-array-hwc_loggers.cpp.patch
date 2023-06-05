@@ -1,0 +1,11 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/src/platforms/android/server/hwc_loggers.cpp	2023-06-05 03:52:35.497942408 +0000
++++ b/src/platforms/android/server/hwc_loggers.cpp	2023-06-05 03:53:18.167000864 +0000
+@@ -20,6 +20,7 @@
+ #include <iostream>
+ #include <iomanip>
+ #include <string>
++#include <array>
+ 
+ namespace mga=mir::graphics::android;
+ 

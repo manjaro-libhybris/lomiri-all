@@ -1,0 +1,33 @@
+Index: mir-1.8.2/src/client/lttng/input_receiver_report.cpp
+===================================================================
+--- mir-1.8.2.orig/src/client/lttng/input_receiver_report.cpp
++++ mir-1.8.2/src/client/lttng/input_receiver_report.cpp
+@@ -68,14 +68,21 @@ void mir::client::lttng::InputReceiverRe
+ 
+     for (unsigned int i = 0; i < mir_touch_event_point_count(tev); i++)
+     {
++        auto event_id = mir_touch_event_id(tev, i);
++        auto touch_x = mir_touch_event_axis_value(tev, i, mir_touch_axis_x);
++        auto touch_y = mir_touch_event_axis_value(tev, i, mir_touch_axis_y);
++        auto touch_major = mir_touch_event_axis_value(tev, i, mir_touch_axis_touch_major);
++        auto touch_minor = mir_touch_event_axis_value(tev, i, mir_touch_axis_touch_minor);
++        auto touch_size = mir_touch_event_axis_value(tev, i, mir_touch_axis_size);
++        auto touch_pressure = mir_touch_event_axis_value(tev, i, mir_touch_axis_pressure);
+         mir_tracepoint(mir_client_input_receiver, touch_event_coordinate,
+-                       mir_touch_event_id(tev, i),
+-                       mir_touch_event_axis_value(tev, i, mir_touch_axis_x),
+-                       mir_touch_event_axis_value(tev, i, mir_touch_axis_y),
+-                       mir_touch_event_axis_value(tev, i, mir_touch_axis_touch_major),
+-                       mir_touch_event_axis_value(tev, i, mir_touch_axis_touch_minor),
+-                       mir_touch_event_axis_value(tev, i, mir_touch_axis_size),
+-                       mir_touch_event_axis_value(tev, i, mir_touch_axis_pressure));
++                       event_id,
++                       touch_x,
++                       touch_y,
++                       touch_major,
++                       touch_minor,
++                       touch_size,
++                       touch_pressure);
+     }
+ }
+ 

@@ -1,8 +1,8 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=lomiri-schemas-git
 _pkgname=lomiri-schemas
-pkgver=r13.0.1.1.r2.g60e0cdb
+pkgver=r32.0.1.3
 pkgrel=1
 pkgdesc='GSettings / AccountsService schema files for Lomiri'
 url='https://gitlab.com/ubports/development/core/lomiri-schemas'

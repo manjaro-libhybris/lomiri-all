@@ -1,0 +1,12 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/src/renderers/gl/renderer.h	2023-06-04 23:38:47.989071099 +0000
++++ b/src/renderers/gl/renderer.h	2023-06-04 23:39:17.033796540 +0000
+@@ -33,6 +33,8 @@
+ #include <unordered_set>
+ #include <vector>
+ 
++#include <array>
++
+ namespace mir
+ {
+ namespace gl { class TextureCache; }

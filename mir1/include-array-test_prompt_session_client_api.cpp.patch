@@ -1,0 +1,11 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/tests/acceptance-tests/test_prompt_session_client_api.cpp	2023-06-05 02:26:00.105411029 +0000
++++ b/tests/acceptance-tests/test_prompt_session_client_api.cpp	2023-06-05 02:26:34.058260970 +0000
+@@ -37,6 +37,7 @@
+ 
+ #include <condition_variable>
+ #include <mutex>
++#include <array>
+ #include <atomic>
+ 
+ namespace mtd = mir::test::doubles;

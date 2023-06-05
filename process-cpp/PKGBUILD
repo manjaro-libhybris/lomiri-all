@@ -1,4 +1,4 @@
-# Maintainer:  Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
 pkgname=process-cpp
 pkgdesc="C++11 library for handling processes"

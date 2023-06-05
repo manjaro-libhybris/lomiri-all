@@ -1,0 +1,11 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/src/client/rpc/mir_protobuf_rpc_channel.cpp       2023-06-05 00:15:42.938803697 +0000
++++ b/src/client/rpc/mir_protobuf_rpc_channel.cpp       2023-06-05 00:15:27.122416973 +0000
+@@ -45,6 +45,7 @@
+ #include <boost/throw_exception.hpp>
+ #include <endian.h>
+ 
++#include <array>
+ #include <stdexcept>
+ #include <cstring>
+ 

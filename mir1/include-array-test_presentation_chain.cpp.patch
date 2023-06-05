@@ -1,0 +1,11 @@
+From: Bardia Moshiri <fakeshell@bardia.tech>
+--- a/tests/acceptance-tests/test_presentation_chain.cpp	2023-06-05 02:33:10.980185245 +0000
++++ b/tests/acceptance-tests/test_presentation_chain.cpp	2023-06-05 02:33:46.589074786 +0000
+@@ -32,6 +32,7 @@
+ #include "mir/fd.h"
+ #include "mir/raii.h"
+ 
++#include <array>
+ #include <atomic>
+ #include <gtest/gtest.h>
+ #include <gmock/gmock.h>
