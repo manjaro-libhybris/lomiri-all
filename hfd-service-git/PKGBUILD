@@ -11,7 +11,7 @@ license=("GPL3")
 depends=(qt5-es2-base qt5-es2-declarative qt5-feedback)
 makedepends=("cmake" "cmake-extras" "git")
 source=("git+https://gitlab.com/ubports/development/core/hfd-service")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -26,11 +26,11 @@ build() {
    mkdir -p build
    cd build
    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_SYSCONFDIR=/etc -DENABLE_LIBHYBRIS=off
-   make -j8
+   make -j$(nproc)
 }
 
 package() {
     cd ${_pkgname}/build
     make DESTDIR="${pkgdir}" install
-	mv ${pkgdir}/usr/lib/qt5 ${pkgdir}/usr/lib/qt/
+    mv ${pkgdir}/usr/lib/qt5 ${pkgdir}/usr/lib/qt/
 } 

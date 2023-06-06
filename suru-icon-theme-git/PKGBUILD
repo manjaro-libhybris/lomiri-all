@@ -8,13 +8,12 @@ pkgdesc="Suru Icon Theme for Lomiri Operating Environment"
 arch=(any)
 url="https://gitlab.com/ubports/development/core/suru-icon-theme"
 license=(CCPL)
-depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme
-         gtk-engine-murrine)
+depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme gtk-engine-murrine)
 makedepends=(imagemagick icon-naming-utils)
 provides=(light-themes ubuntu-mono ubuntu-themes)
 conflicts=(light-themes ubuntu-mono ubuntu-themes)
 source=("git+https://gitlab.com/ubports/development/core/suru-icon-theme")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}

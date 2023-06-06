@@ -12,7 +12,7 @@ license=('GPL3')
 depends=(qt5-es2-base qt5-es2-declarative)
 makedepends=('git' 'cmake' 'intltool')
 source=('git+https://gitlab.com/ubports/development/core/u1db-qt')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}

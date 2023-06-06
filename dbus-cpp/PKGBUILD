@@ -31,7 +31,7 @@ build() {
   cd "${srcdir}/build"
 
   CXXFLAGS=-Wno-error=deprecated-copy cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DDBUS_CPP_VERSION_MAJOR=5 -DDBUS_CPP_VERSION_MINOR=0 -DDBUS_CPP_VERSION_PATCH=0
-  make -j8
+  make -j$(nproc)
 }
 
 package() {

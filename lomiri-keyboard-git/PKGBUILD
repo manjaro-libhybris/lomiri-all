@@ -14,8 +14,8 @@ depends=('maliit-framework' 'qt5-feedback' 'qt5-es2-multimedia' 'gsettings-qt-gi
 makedepends=('git' 'cmake')
 source=("git+https://gitlab.com/ubports/development/core/lomiri-keyboard"
         "e8bbad0d78eb2ca75b47e0d9e71b3c40c2e268bc.patch")
-md5sums=('SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd $_pkgname

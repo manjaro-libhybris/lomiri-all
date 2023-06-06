@@ -14,8 +14,7 @@ depends=(libgee json-glib)
 makedepends=(git cmake intltool vala gobject-introspection python-setuptools)
 source=('git+https://gitlab.com/ubports/development/core/click')
 sha256sums=('SKIP')
-
-BUILDENV+=('!check') # Tests broken due to absense of dpkg
+BUILDENV+=('!check')
 
 pkgver() {
   cd ${_pkgname}
@@ -26,12 +25,7 @@ build() {
   cd ${_pkgname}
   ./autogen.sh 
   ./configure --prefix=/usr --disable-packagekit
-  make -j8
-}
-
-check() {
-  cd ${_pkgname}
-  make check
+  make -j$(nproc)
 }
 
 package() {

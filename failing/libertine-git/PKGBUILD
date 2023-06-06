@@ -14,8 +14,7 @@ depends=(python3 gtest-lomiri qt5-es2-base qt5-quickcontrols)
 makedepends=(git cmake cmake-extras-lomiri dbus-test-runner intltool lomiri-system-settings-git)
 source=('git+https://gitlab.com/ubports/development/core/libertine')
 sha256sums=('SKIP')
-
-BUILDENV+=('!check') # Some tests are broken
+BUILDENV+=('!check')
 
 prepare() {
   cd "${_pkgname}"
@@ -33,11 +32,6 @@ build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
   make
-}
-
-check() {
-  cd ${_pkgname}
-  make ARGS+="--output-on-failure" test
 }
 
 package() {

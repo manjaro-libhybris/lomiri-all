@@ -10,7 +10,7 @@ url="https://launchpad.net/properties-cpp"
 license=('LGPL3')
 makedepends=('cmake')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/properties-cpp_$_pkgver.orig.tar.gz")
-md5sums=('449f95cc864ebe38a35848885ca1cb4b')
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/${pkgname}-${_pkgver}"

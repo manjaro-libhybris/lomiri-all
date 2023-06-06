@@ -12,7 +12,7 @@ makedepends=("gtk3" "glib2" "ayatana-ido" "mate-common" "git")
 depends=("gtk3" "glib2" "ayatana-ido")
 options=('!emptydirs')
 source=("git+https://github.com/AyatanaIndicators/${_pkgname}.git")
-md5sums=("SKIP")
+sha256sums=("SKIP")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-gtk3")
 

@@ -2,31 +2,25 @@
 
 pkgname=camera-app-git
 _pkgname=camera-app
-pkgver=r2484.0f4846f
+pkgver=r2760.82ea258
 pkgrel=1
 pkgdesc="Camera application"
 arch=('x86_64' 'armv7' 'aarch64')
 url="https://gitlab.com/ubports/apps/camera-app"
 license=('GPL3')
 depends=(qt5-es2-base qt5-es2-multimedia qt5-quickcontrols2 exiv2 lomiri-ui-toolkit-git
-         libusermetrics-git lomiri-action-api-git gst-plugins-bad-hybris gst-plugins-bad-libs-hybris) 
+         libusermetrics-git lomiri-action-api-git gst-plugins-bad-hybris gst-plugins-bad-libs-hybris)
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'intltool')
-source=("git+$url.git"
-        unity-actions.patch)
-md5sums=('SKIP' 'SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-  cd $_pkgname
-}
-
 build() {
-  cd build
+  cd ${_pkgname}
   cmake ../$_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
@@ -38,6 +32,6 @@ build() {
 }
 
 package() {
-  cd build
+  cd ${_pkgname}
   make DESTDIR="$pkgdir/" install
 }

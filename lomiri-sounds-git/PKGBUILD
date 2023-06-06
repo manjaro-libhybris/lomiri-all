@@ -8,7 +8,7 @@ arch=('any')
 url="https://gitlab.com/ubports/development/core/lomiri-sounds"
 license=('CC0' 'CC-BY-3.0' 'CC-BY-SA-3.0' 'CC-BY-4.0')
 source=('git+https://gitlab.com/ubports/development/core/lomiri-sounds')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}

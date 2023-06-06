@@ -26,7 +26,7 @@ build() {
   mkdir -p build
   cd build
   cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var
-  make -j8
+  make -j$(nproc)
 }
 
 package() {

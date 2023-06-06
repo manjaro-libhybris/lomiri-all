@@ -12,12 +12,8 @@ depends=("glib2" "systemd" "qt5-es2-base" "deviceinfo" "dbus")
 makedepends=("cmake" "cmake-extras-lomiri" "gtest-lomiri")
 source=("git+https://gitlab.com/ubports/development/core/repowerd"
         "0002-Fix-warning-on-newer-gcc.patch")
-#        "0001-Install-systemd-unit-with-cmake-not-just-debian-pkg.patch"
-#        "0001-Make-wayland-session-a-compatable-repowerd-session.patch")
 sha256sums=("SKIP"
-#           "SKIP"
-           "SKIP")
-#           "SKIP")
+            "SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -31,19 +27,15 @@ prepare() {
   cd ${_pkgname}
 
   patch -Np1 -i ../0002-Fix-warning-on-newer-gcc.patch
-#  patch -Np1 -i ../0001-Install-systemd-unit-with-cmake-not-just-debian-pkg.patch
-#  patch -Np1 -i ../0001-Make-wayland-session-a-compatable-repowerd-session.patch
 }
 
-build()
-{
+build() {
     cd ${_pkgname}
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_SYSCONFDIR=/etc -DREPOWERD_DISABLE_HYBRIS=yes -DREPOWERD_BUILD_TESTS=no
     make
 }
 
-package()
-{
+package() {
     cd ${_pkgname}
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"

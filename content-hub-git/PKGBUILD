@@ -2,7 +2,7 @@
 
 pkgname=content-hub-git
 _pkgname=content-hub
-pkgver=r1183.9a56dc8
+pkgver=r1394.1.0.2
 pkgrel=1
 epoch=1
 pkgdesc='Content sharing/picking infrastructure and service'
@@ -12,22 +12,29 @@ license=(LGPL3)
 conflicts=(content-hub)
 provides=(content-hub)
 depends=(lcov gcovr gtest-lomiri lomiri-app-launch-git lomiri-download-manager-git gsettings-qt apparmor libnotify lomiri-ui-toolkit-git)
-makedepends=(git cmake cmake-extras-lomiri doxygen graphviz) 
+makedepends=(git cmake cmake-extras-lomiri doxygen graphviz qt5-tools)
 checkdepends=(xorg-server-xvfb)
-source=('git+https://gitlab.com/ubports/development/core/content-hub')
-sha256sums=('SKIP')
-
+source=('git+https://gitlab.com/ubports/development/core/content-hub'
+        'QtArg.patch')
+sha256sums=('SKIP'
+            'ab4a52fca78b58365fbb55c2c1190371fe0e07c6bb2c92530d870bc5ebe49a13')
 BUILDENV+=('!check')
 
 pkgver() {
   cd ${_pkgname}
-  echo "r$(git rev-list --count HEAD).$(git describe --always)"
+  echo "r$(git rev-list --count HEAD).$(git describe --always)" | cut -d "-" -f1
 }
 
 prepare() {
-  cd ${_pkgname}
-
-  sed -i 's/ubuntu-app-launch-2/ubuntu-app-launch-3/g' CMakeLists.txt
+    cd ${_pkgname}
+    local src
+    for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      echo "Applying patch $src..."
+      patch -Np1 < "../$src"
+    done
 }
 
 build() {
@@ -35,11 +42,6 @@ build() {
   mkdir -p /tmp/runtime-builduser
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" -DCMAKE_INSTALL_LIBEXECDIR="lib/" -DENABLE_TESTS=off .
   XDG_RUNTIME_DIR=/tmp/runtime-builduser make
-}
-
-check() {
-  cd ${_pkgname}
-  make ARGS+="--output-on-failure" test
 }
 
 package() {

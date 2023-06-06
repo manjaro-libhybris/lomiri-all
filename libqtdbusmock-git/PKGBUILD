@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" .
-  make -j8
+  make -j$(nproc)
 }
 
 package() {

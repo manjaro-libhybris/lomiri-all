@@ -1,0 +1,11 @@
+--- a/import/Lomiri/Content/CMakeLists.txt	2023-06-06 08:27:48.236101265 +0000
++++ b/import/Lomiri/Content/CMakeLists.txt	2023-06-06 08:27:41.823956068 +0000
+@@ -97,7 +97,7 @@ endif()
+ 
+ if(NOT CMAKE_CROSSCOMPILING)
+ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/plugins.qmltypes
+-    COMMAND qmlplugindump -qt=qt5 -noinstantiate -notrelocatable Lomiri.Content 1.1 ../../ > ${CMAKE_CURRENT_BINARY_DIR}/plugins.qmltypes
++    COMMAND qmlplugindump -noinstantiate -notrelocatable Lomiri.Content 1.1 ../../ > ${CMAKE_CURRENT_BINARY_DIR}/plugins.qmltypes
+     DEPENDS ${PLUGIN}
+     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+ )

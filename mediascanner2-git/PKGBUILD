@@ -12,16 +12,8 @@ conflicts=(mediascanner2)
 provides=(mediascanner2)
 depends=(libexif dbus-cpp dbus apparmor glib2 gstreamer gst-plugins-base gdk-pixbuf2 properties-cpp sqlite taglib udisks2 qt5-es2-declarative gst-plugins-good)
 makedepends=(cmake cmake-extras-lomiri gtest-lomiri shared-mime-info)
-source=("git+https://gitlab.com/ubports/development/core/mediascanner2"
-        "fix-cmake-hh-moc-policy.patch")
-md5sums=('SKIP'
-         'SKIP')
-
-prepare() {
-  cd ${_pkgname}
-
-#  patch -Np1 -i "${srcdir}/fix-cmake-hh-moc-policy.patch"
-}
+source=("git+https://gitlab.com/ubports/development/core/mediascanner2")
+sha256sums=('SKIP')
 
 build() {
   mkdir -p ${srcdir}/build

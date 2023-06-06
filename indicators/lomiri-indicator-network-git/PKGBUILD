@@ -12,7 +12,6 @@ conflicts=(indicator-network)
 provides=(indicator-network)
 depends=(lcov gcovr gsettings-qt ofono libqofono-qt5 libqtdbustest-git libqtdbusmock-git gmenuharness-bzr url-dispatcher-git)
 makedepends=(git cmake cmake-extras-lomiri doxygen)
-checkdepends=()
 source=('git+https://gitlab.com/ubports/development/core/lomiri-indicator-network.git'
         'fix-systemd.patch')
 sha256sums=('SKIP'
