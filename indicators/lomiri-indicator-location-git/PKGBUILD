@@ -2,32 +2,23 @@
 
 pkgname="lomiri-indicator-location-git"
 _pkgname="indicator-location"
-pkgver=git_r444
+pkgver=git_r532
 pkgrel=1
 pkgdesc="Lomiri Location Indicator"
 arch=("i686" "x86_64" "aarch64")
 url="https://gitlab.com/ubports/development/core/indicator-location"
 license=("GPL2" "GPL3")
 depends=("systemd" "lomiri-app-launch-git" "glib2" "dbus" "properties-cpp" "url-dispatcher-git")
-makedepends=("cmake" "cmake-extras" "intltool" "git")
-source=("git+https://gitlab.com/ubports/development/core/indicator-location"
-        "fix-systemd.patch")
-md5sums=("SKIP"
-        "2225dc5a239dd1736d4c686f30c76faf")
+makedepends=("cmake" "cmake-extras-lomiri" "intltool" "git")
+source=("git+https://gitlab.com/ubports/development/core/indicator-location")
+sha256sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-
 pkgver() {
     cd ${_pkgname}
     echo "git_r$(git rev-list --count HEAD)"
-}
-
-prepare() {
-    cd ${_pkgname}
-    sed -i 's/ubuntu-app-launch-2/ubuntu-app-launch-3/g' CMakeLists.txt
-    patch -Np1 -i "${srcdir}/fix-systemd.patch"
 }
 
 build() {

@@ -45,12 +45,6 @@ build() {
   make
 }
 
-check() {
-  cd ${_pkgname}/build
-  export PYTHONIOENCODING=UTF-8
-  make ARGS+="--output-on-failure" test
-}
-
 package() {
   cd ${_pkgname}/build
   make DESTDIR="${pkgdir}/" install

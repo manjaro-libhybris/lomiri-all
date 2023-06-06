@@ -2,8 +2,8 @@
 
 pkgname=lomiri-system-compositor-git
 _pkgname=lomiri-system-compositor
-pkgver=r1172.783ddfb
-pkgrel=2
+pkgver=r1215.7982987
+pkgrel=1
 pkgdesc='Lomiri Compositor for Mir'
 url='https://gitlab.com/ubports/development/core/lomiri-system-compositor'
 arch=(x86_64 i686 armv7h aarch64)

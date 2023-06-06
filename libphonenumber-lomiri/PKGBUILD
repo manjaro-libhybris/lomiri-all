@@ -1,0 +1,47 @@
+# Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
+
+pkgname=libphonenumber-lomiri
+pkgver=8.13.8
+pkgrel=2
+pkgdesc="Google's common library for parsing, formatting, and validating international phone numbers"
+url="https://github.com/googlei18n/libphonenumber"
+arch=(any)
+license=(Apache)
+depends=(abseil-cpp icu protobuf-lomiri)
+makedepends=(cmake git gtest-lomiri jre-openjdk-headless)
+_commit=07cd7bbb8a2faf9f2ef7c338e66f2ba303dfad0f  # tags/v8.13.8^0
+source=("git+$url#commit=$_commit")
+provides=('libphonenumber')
+conflicts=('libphonenumber')
+replaces=('libphonenumber')
+b2sums=('SKIP')
+
+pkgver() {
+  cd libphonenumber
+  git describe --tags | sed 's/^libphonenumber-\|^v//;s/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd libphonenumber
+
+  # Fix build with abseil-cpp 2023
+  sed -e 's|CMAKE_CXX_STANDARD 11|CMAKE_CXX_STANDARD 17|' -i tools/cpp/CMakeLists.txt
+}
+
+build() {
+  local cmake_options=(
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_CXX_STANDARD=17
+    -DUSE_BOOST=OFF
+    -DUSE_STDMUTEX=ON
+    -DCMAKE_CXX_FLAGS="-Wno-array-bounds -Wno-error"
+  )
+
+  cmake -S libphonenumber/cpp -B build "${cmake_options[@]}"
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

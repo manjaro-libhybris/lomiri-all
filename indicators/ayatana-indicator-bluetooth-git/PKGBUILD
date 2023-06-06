@@ -1,10 +1,10 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
-pkgname="ayatana-indicator-power-git"
-_pkgname="ayatana-indicator-power"
-pkgver=git_r1350
+pkgname="ayatana-indicator-bluetooth-git"
+_pkgname="ayatana-indicator-bluetooth"
+pkgver=git_r550
 pkgrel=1
-pkgdesc="Ayatana Indicator showing power state"
+pkgdesc="Ayatana System Indicator for Bluetooth Management"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/AyatanaIndicators"
 license=("GPL2" "GPL3")

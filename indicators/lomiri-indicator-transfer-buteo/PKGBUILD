@@ -1,17 +1,17 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
-pkgname="ayatana-indicator-power-git"
-_pkgname="ayatana-indicator-power"
-pkgver=git_r1350
+pkgname="lomiri-indicator-transfer-buteo-git"
+_pkgname="indicator-transfer-buteo"
+pkgver=git_r165
 pkgrel=1
-pkgdesc="Ayatana Indicator showing power state"
+pkgdesc="Lomiri Location Indicator"
 arch=("i686" "x86_64" "aarch64")
-url="https://github.com/AyatanaIndicators"
+url="https://gitlab.com/ubports/development/core/indicator-location"
 license=("GPL2" "GPL3")
-depends=("libayatana-indicator" "upower" "systemd" "libnotify" "dconf" "url-dispatcher-git")
-makedepends=("cmake" "cmake-extras-lomiri" "libnotify" "glib2" "python" "git")
-source=("git+https://github.com/AyatanaIndicators/${_pkgname}.git")
-md5sums=("SKIP")
+depends=("systemd" "lomiri-app-launch-git" "glib2" "dbus" "properties-cpp" "url-dispatcher-git")
+makedepends=("cmake" "cmake-extras-lomiri" "intltool" "git")
+source=("git+https://gitlab.com/ubports/development/core/indicator-transfer-buteo")
+sha256sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

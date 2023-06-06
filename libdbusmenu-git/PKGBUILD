@@ -1,15 +1,15 @@
 # Maintainer: Bardia Moshiri <fakeshell@bardia.tech>
 
-pkgname="ayatana-indicator-power-git"
-_pkgname="ayatana-indicator-power"
-pkgver=git_r1350
+pkgname="libdbusmenu-git"
+_pkgname="libdbusmenu"
+pkgver=git_r3256
 pkgrel=1
-pkgdesc="Ayatana Indicator showing power state"
+pkgdesc="Pass a menu structure across DBus so that a program can create a menu simply without worrying about how it is displayed on the other side of the bus."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/AyatanaIndicators"
 license=("GPL2" "GPL3")
 depends=("libayatana-indicator" "upower" "systemd" "libnotify" "dconf" "url-dispatcher-git")
-makedepends=("cmake" "cmake-extras-lomiri" "libnotify" "glib2" "python" "git")
+makedepends=("libnotify" "glib2" "python" "git" "libtool")
 source=("git+https://github.com/AyatanaIndicators/${_pkgname}.git")
 md5sums=("SKIP")
 options=("!emptydirs")
@@ -23,8 +23,9 @@ pkgver() {
 
 build() {
     cd ${_pkgname}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -Denable_tests=OFF
-    make
+    ./autogen.sh
+    CFLAGS="-Wno-error" CXXFLAGS="-Wno-error" ./configure --prefix=/usr
+    make -j$(nproc)
 }
 
 package() {

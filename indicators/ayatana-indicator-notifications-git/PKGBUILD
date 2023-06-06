@@ -2,33 +2,30 @@
 
 pkgname="ayatana-indicator-notifications-git"
 _pkgname="ayatana-indicator-notifications"
-pkgver="0.8.2"
-pkgrel="1"
+pkgver=r446.fc9e98e
+pkgrel=1
 pkgdesc="Ayatana Indicator for viewing recent notifications"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/AyatanaIndicators"
 license=("GPL3")
 depends=("glib2" "libayatana-indicator")
 makedepends=("intltool" "libayatana-indicator" "glib2" "gdk-pixbuf2" "gtk3" "mate-common")
-source=("https://github.com/AyatanaIndicators/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("0e520af7b7b0cce368d9d684172a9e19")
+source=("git+https://github.com/AyatanaIndicators/${_pkgname}")
+sha256sums=('SKIP')
 options=("!emptydirs")
 
-prepare()
-{
-    cd ${_pkgname}-${pkgver}
-    NOCONFIGURE=1 ./autogen.sh
+pkgver() {
+  cd ${_pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build()
-{
-    cd ${_pkgname}-${pkgver}
-    ./configure --prefix=/usr --libexecdir=/usr/lib --disable-static
+build() {
+    cd ${_pkgname}
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_SYSCONFDIR=/etc
     make
 }
 
-package()
-{
-    cd ${_pkgname}-${pkgver}
+package() {
+    cd ${_pkgname}
     make DESTDIR="${pkgdir}" install
 }

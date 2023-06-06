@@ -2,15 +2,14 @@
 
 pkgname="ayatana-indicator-display-git"
 _pkgname="ayatana-indicator-display"
-pkgver="0.6.1"
-pkgrel="1"
+pkgver=r488.f70ef34
+pkgrel=1
 pkgdesc="Ayatana Indicator that helps with display rotate"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/AyatanaIndicators"
 license=("GPL3")
 depends=("glib2" "accountsservice" "hicolor-icon-theme" "dconf" "systemd" "qt5-es2-base" "gtest-lomiri" "libqtdbustest-git" "libqtdbusmock-git")
-makedepends=("cmake-extras" "dbus" "intltool" "properties-cpp" "git" "cmake")
-optdepends=("mate-ayatana-indicator-applet")
+makedepends=("cmake-extras-lomiri" "dbus" "intltool" "properties-cpp" "git" "cmake" "geoclue")
 source=("git+https://github.com/AyatanaIndicators/${_pkgname}.git")
 md5sums=("SKIP")
 options=("!emptydirs")
@@ -22,15 +21,13 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build()
-{
+build() {
     cd ${_pkgname}
-   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_SYSCONFDIR=/etc
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_SYSCONFDIR=/etc
     make
 }
 
-package()
-{
+package() {
     cd ${_pkgname}
     make DESTDIR="${pkgdir}" install
 }

@@ -12,18 +12,19 @@ source=('run-systemd-session'
         'lomiri.service'
         'maliit-server.service'
         'lomiri-session'
-        'usc-wrapper'
+        'lsc-wrapper'
         'lomiri-touch-session'
         'lomiri-touch.desktop'
         '52-lomiri-touch.conf')
-md5sums=('feeb2cec28c11f0d823b490899edbe1e'
-         '1a9d14484164501f76aac7dd672f9d87'
-         '8152354ba26848a5a01e96f239284b2c'
-         '673eb5859c61d0863100e3fe0dbb7833'
-         '6227d2cab05ddb706d84c105213a3e5b'
-         '6c3818518142cd3be63cfb5f0e2ea849'
-         '46a9c97b74a564104ad349702fd912c3'
-         'a522bffbad09cfebabb734bbb019b670')
+
+sha256sums=('43ae6daacd0c286821b152ee1d220836d118a08a29491098fe4e2be85389e32c'
+            '84771eed3e9a32b792e2ad8563ccbcb2dfd0732eae609934d6a3eaa0540b1c2f'
+            '8f69ba74d554a64c920a55c749065f4764607b644f92e4894425bd2217c73142'
+            '6e0c2d4220ea337c248d207c8007e4dbe21205ae4729d9afed4011c493d8d755'
+            '6797654772d7581fc3144d98e933fdc299cf61bedd02ef244b6453b43daea533'
+            '8f96423b7df75517253f356687ccf3e4e5c8f7d5b52cf83ab513fe6ad97f9081'
+            '16a6cd87385356e8dcf6f144bee49076b9b4808316a3394537454a5564fcca94'
+            '353310d358312fc37ddb34ea8aa0265d1f3ed32b32d30636670d86d157b7e894')
 
 prepare(){
     mkdir -p "${pkgdir}/usr/share/lomiri-session"
@@ -38,7 +39,7 @@ package() {
 
     install -Dm755 "${srcdir}/lomiri-session" -t "${pkgdir}/usr/bin"
 
-    install "${srcdir}/usc-wrapper" -t "${pkgdir}/usr/share/lomiri-session/"
+    install "${srcdir}/lsc-wrapper" -t "${pkgdir}/usr/share/lomiri-session/"
     install -Dm755 "${srcdir}/lomiri-touch-session" -t "${pkgdir}/usr/bin/"
     install -Dm644 "${srcdir}/lomiri-touch.desktop" -t "${pkgdir}/usr/share/lightdm/sessions/"
     install -Dm644 "${srcdir}/52-lomiri-touch.conf" -t "${pkgdir}/usr/share/lightdm/lightdm.conf.d/"
