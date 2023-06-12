@@ -2,7 +2,7 @@
 
 pkgname=lomiri-mobile-session
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lomiri Mobile Session Scripts'
 url='https://github.com/manjaro-libhybris/lomiri-all/tree/main/lomiri-mobile-session'
 arch=(any)
@@ -15,6 +15,7 @@ source=('run-systemd-session'
         'lsc-wrapper'
         'lomiri-touch-session'
         'lomiri-touch.desktop'
+        'lomiri-lightdm-session'
         '52-lomiri-touch.conf')
 
 sha256sums=('43ae6daacd0c286821b152ee1d220836d118a08a29491098fe4e2be85389e32c'
@@ -24,6 +25,7 @@ sha256sums=('43ae6daacd0c286821b152ee1d220836d118a08a29491098fe4e2be85389e32c'
             '6797654772d7581fc3144d98e933fdc299cf61bedd02ef244b6453b43daea533'
             '8f96423b7df75517253f356687ccf3e4e5c8f7d5b52cf83ab513fe6ad97f9081'
             '16a6cd87385356e8dcf6f144bee49076b9b4808316a3394537454a5564fcca94'
+            'f376bc367f6b4b4791fb5ec066ed8c2cf41a1fab9089566e596039e250dde0ba'
             '353310d358312fc37ddb34ea8aa0265d1f3ed32b32d30636670d86d157b7e894')
 
 prepare(){
@@ -38,6 +40,7 @@ package() {
     install -Dm755 "${srcdir}/maliit-server.service" -t "${pkgdir}/usr/lib/systemd/user"
 
     install -Dm755 "${srcdir}/lomiri-session" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/lomiri-lightdm-session" -t "${pkgdir}/usr/bin"
 
     install "${srcdir}/lsc-wrapper" -t "${pkgdir}/usr/share/lomiri-session/"
     install -Dm755 "${srcdir}/lomiri-touch-session" -t "${pkgdir}/usr/bin/"
